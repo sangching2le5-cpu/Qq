@@ -1,2710 +1,493 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#e8f2fb">
-<title>Unit 13 – Global Problems | Interactive E-Lesson (B1–B2)</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit 13 – Global Problems | Flashcards</title>
 <style>
-/* ============ THEME TOKENS ============ */
-:root{
-  --bg:#f2f7fc;
-  --bg-alt:#ffffff;
-  --card:#ffffff;
-  --card-2:#f7fbff;
-  --text:#1e2c3a;
-  --text-soft:#5d6f80;
-  --border:#dbe7f3;
-  --primary:#3b82c4;
-  --primary-dark:#2f6ba3;
-  --primary-soft:#e4f0fb;
-  --good:#1f8a54;
-  --good-soft:#e3f6ec;
-  --bad:#c0392b;
-  --bad-soft:#fdeaea;
-  --warn:#b8860b;
-  --shadow:0 1px 2px rgba(31,45,61,.06), 0 8px 22px rgba(59,130,196,.08);
-  --radius:14px;
-  --hl-yellow:#ffe98a;
-  --hl-blue:#b9dcff;
-  --hl-green:#b8ecc4;
-  --hl-pink:#ffc7dd;
-}
-html[data-theme="dark"]{
-  --bg:#0e1620;
-  --bg-alt:#16212d;
-  --card:#16212d;
-  --card-2:#1b2836;
-  --text:#e7eef6;
-  --text-soft:#9db0c3;
-  --border:#26343f;
-  --primary:#5aa9e6;
-  --primary-dark:#7cc0f0;
-  --primary-soft:#1c3348;
-  --good:#5ed49b;
-  --good-soft:#15311f;
-  --bad:#ff8b7e;
-  --bad-soft:#3a1e1b;
-  --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 22px rgba(0,0,0,.35);
-  --hl-yellow:#7a6a1e;
-  --hl-blue:#1f4b74;
-  --hl-green:#1e5a37;
-  --hl-pink:#6d2b47;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-  background:var(--bg);color:var(--text);line-height:1.62;
-  -webkit-text-size-adjust:100%;
-  font-size:16px;
-}
-h1,h2,h3,h4{line-height:1.28;margin:0 0 .5rem;font-weight:650}
-h1{font-size:1.5rem}
-h2{font-size:1.13rem}
-h3{font-size:1rem}
-p{margin:0 0 .75rem}
-ul,ol{margin:0 0 .75rem;padding-left:1.25rem}
-li{margin:.25rem 0}
-a{color:var(--primary)}
-button{font-family:inherit;font-size:.9rem;cursor:pointer}
-input,textarea,select{font-family:inherit;font-size:.95rem}
-.ico{width:16px;height:16px;flex:0 0 auto;vertical-align:-3px}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{
+    margin:0; min-height:100vh; padding:22px 16px 40px;
+    font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    color:#e8ecf7; background-color:#070b16;
+    background-image:
+      radial-gradient(900px 520px at 8% -12%, rgba(59,130,246,.28), transparent 62%),
+      radial-gradient(820px 520px at 95% 2%, rgba(168,85,247,.22), transparent 62%),
+      radial-gradient(760px 520px at 50% 118%, rgba(34,211,238,.16), transparent 62%);
+    background-attachment:fixed;
+    display:flex; flex-direction:column; align-items:center; gap:16px;
+  }
+  header{text-align:center}
+  h1{
+    margin:0; font-size:clamp(20px,3.6vw,30px); letter-spacing:-.5px;
+    background:linear-gradient(90deg,#7dd3fc,#a78bfa,#f0abfc);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  header p{margin:7px 0 0; color:#93a0bd; font-size:14px}
 
-/* ============ LAYOUT ============ */
-#sidebar{
-  position:fixed;top:0;left:0;bottom:0;width:262px;z-index:60;
-  background:var(--bg-alt);border-right:1px solid var(--border);
-  display:flex;flex-direction:column;overflow-y:auto;
-  transition:transform .22s ease;
-}
-body.nav-closed #sidebar{transform:translateX(-100%)}
-#main{margin-left:262px;transition:margin-left .22s ease;min-height:100vh}
-body.nav-closed #main{margin-left:0}
-@media (max-width:900px){
-  #main{margin-left:0}
-  #sidebar{box-shadow:0 0 40px rgba(0,0,0,.25)}
-}
-#backdrop{
-  position:fixed;inset:0;background:rgba(14,22,32,.42);z-index:55;display:none;
-}
-body:not(.nav-closed) #backdrop.show{display:block}
-@media (min-width:901px){#backdrop{display:none !important}}
+  .wrap{width:100%; max-width:720px; display:flex; flex-wrap:wrap; gap:10px; justify-content:center}
 
-/* ============ SIDEBAR ============ */
-.brand{display:flex;gap:10px;align-items:center;padding:16px 16px 12px}
-.brand-mark{
-  width:38px;height:38px;border-radius:11px;flex:0 0 auto;
-  background:linear-gradient(145deg,#6fb1e6,#3b82c4);color:#fff;
-  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;
-  box-shadow:0 4px 10px rgba(59,130,196,.35);
-}
-.brand-text{display:flex;flex-direction:column;line-height:1.2}
-.brand-text strong{font-size:.95rem}
-.brand-text span{font-size:.74rem;color:var(--text-soft);letter-spacing:.03em;text-transform:uppercase}
-#nav{display:flex;flex-direction:column;gap:2px;padding:8px 10px;flex:1}
-.nav-item{
-  display:flex;align-items:center;gap:10px;width:100%;text-align:left;
-  padding:9px 11px;border:none;border-radius:10px;background:transparent;color:var(--text);
-  font-size:.9rem;font-weight:500;transition:background .15s;
-}
-.nav-item:hover{background:var(--primary-soft)}
-.nav-item.active{background:var(--primary-soft);color:var(--primary-dark);font-weight:650}
-html[data-theme="dark"] .nav-item.active{color:var(--primary)}
-.nav-group-label{
-  font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--text-soft);
-  padding:14px 12px 4px;font-weight:700;
-}
-.sidebar-foot{padding:12px 14px 18px;border-top:1px solid var(--border)}
-.mp-label{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text-soft);margin-bottom:5px}
-.bar{height:7px;background:var(--primary-soft);border-radius:99px;overflow:hidden}
-.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#6fb1e6,#3b82c4);border-radius:99px;transition:width .3s}
+  .chip{
+    font-family:inherit; font-size:13px; cursor:pointer;
+    padding:8px 14px; border-radius:999px; transition:.2s;
+    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,.05); color:#c7d2ea;
+  }
+  .chip:hover{background:rgba(255,255,255,.11); color:#fff}
+  .chip.active{
+    background:linear-gradient(135deg,#3b82f6,#8b5cf6);
+    border-color:transparent; color:#fff;
+    box-shadow:0 6px 18px rgba(99,102,241,.4);
+  }
 
-/* ============ TOPBAR ============ */
-#topbar{
-  position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:10px;
-  padding:9px 16px;background:var(--bg-alt);border-bottom:1px solid var(--border);
-}
-.icon-btn{
-  width:36px;height:36px;border-radius:10px;border:1px solid var(--border);
-  background:var(--card);color:var(--text);display:flex;align-items:center;justify-content:center;
-  flex:0 0 auto;
-}
-.icon-btn:hover{background:var(--primary-soft)}
-#crumb{font-weight:650;font-size:.95rem;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.topbar-right{display:flex;gap:8px;align-items:center}
-#globalSearch{
-  width:190px;padding:8px 12px;border-radius:10px;border:1px solid var(--border);
-  background:var(--card);color:var(--text);outline:none;
-}
-#globalSearch:focus{border-color:var(--primary)}
-@media (max-width:640px){ #globalSearch{width:110px} }
-#scrollProgress{position:fixed;top:0;left:0;height:3px;width:0;z-index:70;background:linear-gradient(90deg,#7cc0f0,#3b82c4);transition:width .08s linear}
+  .seg{display:flex; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.13);
+       border-radius:999px; padding:3px; gap:3px}
+  .seg button{
+    font-family:inherit; font-size:13px; cursor:pointer; border:0; border-radius:999px;
+    padding:7px 14px; background:transparent; color:#a9b6d3; transition:.2s;
+  }
+  .seg button.active{background:rgba(255,255,255,.14); color:#fff; box-shadow:0 2px 10px rgba(0,0,0,.3)}
 
-/* ============ CONTENT ============ */
-#content{padding:20px 22px 90px;max-width:1000px;margin:0 auto}
-@media (max-width:640px){ #content{padding:16px 14px 90px} }
-.page{display:none;animation:fade .18s ease}
-.page.active{display:block}
-@keyframes fade{from{opacity:.4}to{opacity:1}}
-.page-head{margin-bottom:18px}
-.pill{
-  display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--primary-dark);background:var(--primary-soft);
-  padding:3px 10px;border-radius:99px;margin-bottom:8px;
-}
-html[data-theme="dark"] .pill{color:var(--primary)}
-.lead{color:var(--text-soft);font-size:.96rem;margin:0}
+  .ghost{
+    font-family:inherit; font-size:13px; cursor:pointer; padding:8px 15px; border-radius:999px;
+    border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.05); color:#c7d2ea; transition:.2s;
+  }
+  .ghost:hover{background:rgba(255,255,255,.12); color:#fff}
 
-.card{
-  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-  padding:18px 20px;margin-bottom:16px;box-shadow:var(--shadow);
-}
-@media (max-width:640px){ .card{padding:15px 14px} }
-.card>h2:first-child{margin-top:0}
-.muted{color:var(--text-soft);font-size:.88rem}
-.small{font-size:.83rem}
-.hr{height:1px;background:var(--border);margin:14px 0}
+  .switch{display:flex; align-items:center; gap:8px; font-size:13px; color:#a9b6d3;
+          padding:8px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.14);
+          background:rgba(255,255,255,.05); cursor:pointer; user-select:none}
+  .switch input{accent-color:#8b5cf6; cursor:pointer}
 
-/* ============ VOCAB CARDS ============ */
-.vocab-grid{display:grid;grid-template-columns:1fr;gap:12px}
-@media (min-width:760px){ .vocab-grid{grid-template-columns:1fr 1fr} }
-.vcard{
-  background:var(--card-2);border:1px solid var(--border);border-radius:12px;
-  padding:13px 14px;position:relative;
-}
-.vcard.learned{border-color:var(--good);background:var(--good-soft)}
-.vcard-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
-.vword{font-weight:700;font-size:1.02rem;color:var(--primary-dark)}
-html[data-theme="dark"] .vword{color:var(--primary)}
-.vipa{font-weight:400;font-size:.85rem;color:var(--text-soft);font-family:"Segoe UI",Arial,sans-serif}
-.vmeta{display:flex;gap:8px;align-items:center;margin-top:2px;flex-wrap:wrap}
-.pos{
-  font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;font-weight:700;
-  background:var(--primary-soft);color:var(--primary-dark);padding:1px 7px;border-radius:99px;
-}
-html[data-theme="dark"] .pos{color:var(--primary)}
-.vvi{font-size:.9rem;font-weight:600;color:var(--good)}
-.vcard-actions{display:flex;gap:5px;flex:0 0 auto;flex-wrap:wrap;justify-content:flex-end}
-.chip-btn{
-  width:29px;height:29px;border-radius:8px;border:1px solid var(--border);
-  background:var(--card);color:var(--text-soft);font-size:.85rem;line-height:1;
-  display:flex;align-items:center;justify-content:center;
-}
-.chip-btn[aria-pressed="true"]{background:var(--primary-soft);color:var(--primary-dark);border-color:var(--primary)}
-html[data-theme="dark"] .chip-btn[aria-pressed="true"]{color:var(--primary)}
-.chip-btn.bm[aria-pressed="true"]{background:#fff4cf;border-color:#e5c65a;color:#a97d00}
-html[data-theme="dark"] .chip-btn.bm[aria-pressed="true"]{background:#3a3116;color:#f0cf6a;border-color:#7a6a1e}
-.chip-btn.ln[aria-pressed="true"]{background:var(--good-soft);border-color:var(--good);color:var(--good)}
-.chip-btn.spk:hover{background:var(--primary-soft);color:var(--primary-dark);border-color:var(--primary)}
-.vdef{margin-top:8px;font-size:.88rem}
-.vdef-vi{font-size:.85rem;color:var(--text-soft);font-style:italic}
-.vex{margin-top:8px;font-size:.88rem}
-.vex-vi{font-size:.84rem;color:var(--text-soft);font-style:italic}
-.vcolloc{margin-top:8px;font-size:.83rem;color:var(--text-soft)}
-.vnote{
-  margin-top:8px;font-size:.83rem;background:var(--primary-soft);border-radius:9px;padding:7px 10px;
-}
-.hide-vi .vvi,.hide-vi .vdef-vi,.hide-vi .vex-vi{filter:blur(5px);cursor:pointer;user-select:none}
-.hide-vi .revealed .vvi,.hide-vi .revealed .vdef-vi,.hide-vi .revealed .vex-vi{filter:none}
+  /* ---- Card ---- */
+  .scene{width:100%; max-width:660px; perspective:1600px}
+  .card{position:relative; width:100%; height:clamp(370px,54vh,440px); cursor:pointer}
+  .card-inner{position:absolute; inset:0; transform-style:preserve-3d;
+              transition:transform .65s cubic-bezier(.22,.8,.3,1)}
+  .card.flipped .card-inner{transform:rotateY(180deg)}
+  .card-face{
+    position:absolute; inset:0; overflow:auto;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:14px; padding:26px 22px; text-align:center;
+    border-radius:26px; border:1px solid rgba(255,255,255,.13);
+    background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.028));
+    box-shadow:0 26px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.12);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  }
+  .card-back{transform:rotateY(180deg)}
 
-/* ============ BUTTONS ============ */
-.btn{
-  display:inline-flex;align-items:center;gap:7px;justify-content:center;
-  padding:9px 16px;border-radius:10px;border:1px solid var(--border);
-  background:var(--card);color:var(--text);font-weight:600;transition:.15s;
-}
-.btn:hover{background:var(--primary-soft)}
-.btn.primary{background:var(--primary);border-color:var(--primary);color:#fff}
-.btn.primary:hover{background:var(--primary-dark);border-color:var(--primary-dark)}
-.btn.ghost{background:transparent}
-.btn.danger{color:var(--bad);border-color:var(--bad)}
-.btn.danger:hover{background:var(--bad-soft)}
-.btn.sm{padding:6px 12px;font-size:.83rem}
-.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .badge{
+    font-size:11px; letter-spacing:.7px; text-transform:uppercase; font-weight:600;
+    color:#9fb3d9; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1);
+    padding:4px 12px; border-radius:999px;
+  }
+  .word{font-size:clamp(28px,6.4vw,46px); font-weight:700; letter-spacing:-1px; line-height:1.1}
+  .word-sm{font-size:19px; font-weight:600; color:#c3d0e9}
+  .meta{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center}
+  .pos{font-size:12px; font-style:italic; color:#8fa1c4; background:rgba(255,255,255,.07);
+       padding:2px 9px; border-radius:7px}
+  .ipa{font-family:"SF Mono",Consolas,monospace; font-size:15px; color:#67e8f9}
+  .meaning{font-size:clamp(20px,4.4vw,26px); font-weight:600; color:#fde68a; line-height:1.35}
+  .example{font-size:15px; color:#c3cfe6; font-style:italic; line-height:1.6; max-width:520px}
 
-/* ============ HLBLOCK + MARKS ============ */
-.hlblock{margin:0 0 .8rem;padding:2px 0;border-radius:4px;
-  -webkit-user-select:text; user-select:text; -webkit-touch-callout:none;}
-.hlblock:last-child{margin-bottom:0}
-mark.hl{padding:.05em .05em;border-radius:3px;color:inherit;background:transparent}
-mark.hl-yellow{background:var(--hl-yellow)}
-mark.hl-blue{background:var(--hl-blue)}
-mark.hl-green{background:var(--hl-green)}
-mark.hl-pink{background:var(--hl-pink)}
+  .speak-row{display:flex; gap:9px; flex-wrap:wrap; justify-content:center; margin-top:4px}
+  .speak{
+    font-family:inherit; font-size:13px; cursor:pointer; padding:9px 16px; border-radius:999px;
+    border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.07); color:#dbe4f7;
+    transition:.18s;
+  }
+  .speak:hover{background:rgba(255,255,255,.16); transform:translateY(-1px)}
+  .speak:active{transform:scale(.96)}
+  .speak.on{border-color:rgba(103,232,249,.6); box-shadow:0 0 0 3px rgba(103,232,249,.14)}
+  .speak.playing{background:rgba(103,232,249,.28); color:#fff}
 
-/* ============ LEGEND ============ */
-#hlLegend{
-  background:var(--card-2);border-bottom:1px solid var(--border);
-  padding:8px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:.8rem;
-  color:var(--text-soft);
-}
-#hlLegend[hidden]{display:none}
-.legend-swatches{display:flex;gap:10px;flex-wrap:wrap}
-.sw-item{display:flex;align-items:center;gap:5px}
-.sw-dot{width:14px;height:14px;border-radius:4px;border:1px solid rgba(0,0,0,.12)}
-.sw-yellow{background:var(--hl-yellow)}.sw-blue{background:var(--hl-blue)}
-.sw-green{background:var(--hl-green)}.sw-pink{background:var(--hl-pink)}
+  .flip-hint{position:absolute; bottom:14px; left:0; right:0; font-size:11.5px; color:#7f8dad; letter-spacing:.3px}
 
-/* floating toolbar */
-#hlToolbar{
-  position:fixed;z-index:120;display:flex;align-items:center;gap:6px;
-  background:var(--bg-alt);border:1px solid var(--border);border-radius:12px;
-  padding:6px 8px;box-shadow:0 10px 28px rgba(20,40,70,.22);
-}
-#hlToolbar[hidden]{display:none}
-#hlToolbar .sw{
-  width:26px;height:26px;border-radius:8px;border:1px solid rgba(0,0,0,.14);
-}
-#hlToolbar .sw:hover{transform:scale(1.08)}
-#hlToolbar .sep{width:1px;height:20px;background:var(--border)}
-#hlToolbar .hl-btn{
-  border:none;background:transparent;color:var(--text);font-size:1rem;
-  width:28px;height:26px;border-radius:8px;
-}
-#hlToolbar .hl-btn:hover{background:var(--bad-soft);color:var(--bad)}
+  /* ---- Progress & controls ---- */
+  .progress{width:100%; max-width:660px; display:flex; align-items:center; gap:14px}
+  .bar{flex:1; height:7px; border-radius:999px; background:rgba(255,255,255,.09); overflow:hidden}
+  .fill{height:100%; width:0; border-radius:999px;
+        background:linear-gradient(90deg,#38bdf8,#a78bfa); transition:width .3s ease}
+  .counter{font-size:13px; color:#93a0bd; font-variant-numeric:tabular-nums; min-width:64px; text-align:right}
 
-/* ============ QUIZ ============ */
-.q{margin-bottom:14px;padding-bottom:12px;border-bottom:1px dashed var(--border)}
-.q:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.q-prompt{font-weight:600;font-size:.93rem;margin-bottom:7px}
-.qnum{color:var(--primary);margin-right:4px}
-.opts{display:flex;flex-direction:column;gap:6px}
-.opt{
-  display:flex;gap:9px;align-items:flex-start;padding:8px 11px;border:1px solid var(--border);
-  border-radius:10px;background:var(--card-2);cursor:pointer;font-size:.9rem;transition:.12s;
-}
-.opt:hover{border-color:var(--primary)}
-.opt input{margin-top:4px;accent-color:var(--primary)}
-.opt.correct{border-color:var(--good);background:var(--good-soft)}
-.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
-.qinput{
-  width:100%;padding:8px 11px;border-radius:9px;border:1px solid var(--border);
-  background:var(--card-2);color:var(--text);outline:none;
-}
-.qinput:focus{border-color:var(--primary)}
-.qinput.correct{border-color:var(--good);background:var(--good-soft)}
-.qinput.wrong{border-color:var(--bad);background:var(--bad-soft)}
-.fb{margin-top:8px;font-size:.86rem;border-radius:9px;padding:8px 11px}
-.fb.good{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
-.fb.bad{background:var(--bad-soft);color:var(--bad);border:1px solid var(--bad)}
-.fb .ans{color:var(--text);font-weight:600}
-.ex-score{font-weight:700;font-size:.9rem;color:var(--primary-dark)}
-html[data-theme="dark"] .ex-score{color:var(--primary)}
-.worked{
-  background:var(--primary-soft);border-radius:10px;padding:9px 12px;font-size:.86rem;margin-bottom:12px;
-}
-.wtable{width:100%;border-collapse:collapse;font-size:.9rem}
-.wtable th,.wtable td{border:1px solid var(--border);padding:8px;text-align:left;vertical-align:top}
-.wtable th{background:var(--primary-soft);font-size:.82rem}
-.wtable td.shaded{background:repeating-linear-gradient(45deg,var(--border),var(--border) 3px,transparent 3px,transparent 7px)}
-.given{font-weight:650;color:var(--primary-dark)}
-html[data-theme="dark"] .given{color:var(--primary)}
-.wtable .q{margin:0;border:none;padding:0}
+  .controls{display:flex; gap:10px; flex-wrap:wrap; justify-content:center}
+  .nav{
+    font-family:inherit; font-size:14px; cursor:pointer; padding:12px 24px; border-radius:14px;
+    border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); color:#dbe4f7; transition:.2s;
+  }
+  .nav:hover{background:rgba(255,255,255,.14); transform:translateY(-1px)}
+  .nav:active{transform:scale(.97)}
+  .nav.primary{
+    background:linear-gradient(135deg,#3b82f6,#8b5cf6); border-color:transparent;
+    font-weight:600; box-shadow:0 10px 26px rgba(99,102,241,.4); min-width:150px;
+  }
 
-/* ============ MATCHING ============ */
-.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.mcol{display:flex;flex-direction:column;gap:8px}
-.mitem{
-  padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card-2);
-  text-align:left;font-size:.9rem;transition:.12s;
-}
-.mitem:hover{border-color:var(--primary)}
-.mitem.sel{border-color:var(--primary);background:var(--primary-soft);font-weight:650}
-.mitem.matched{border-color:var(--good);background:var(--good-soft);color:var(--good);pointer-events:none}
-.mitem.shake{animation:shk .3s}
-@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .hint{font-size:12.5px; color:#76839f; text-align:center; margin:2px 0 0; line-height:1.9}
+  kbd{
+    font-family:inherit; font-size:11.5px; background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.16); border-bottom-width:2px;
+    border-radius:6px; padding:1px 7px; margin:0 2px; color:#c7d2ea;
+  }
+  .note{font-size:12px; color:#c084fc; text-align:center; max-width:660px; line-height:1.6}
 
-/* ============ NOTEBOOK / NOTES ============ */
-.toolbar-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
-.field{
-  padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);
-}
-.chk{display:flex;align-items:center;gap:7px;font-size:.86rem;color:var(--text-soft)}
-.note-item{margin-bottom:18px}
-.note-item label{display:block;font-weight:650;margin-bottom:6px;font-size:.93rem}
-.note-item textarea{
-  width:100%;min-height:110px;padding:11px 13px;border-radius:11px;border:1px solid var(--border);
-  background:var(--card-2);color:var(--text);resize:vertical;line-height:1.6;outline:none;
-}
-.note-item textarea:focus{border-color:var(--primary)}
-.note-status{font-size:.75rem;color:var(--good);margin-left:8px}
-
-/* ============ FLASHCARD ============ */
-.flash{
-  background:linear-gradient(160deg,var(--card-2),var(--card));border:1px solid var(--border);
-  border-radius:16px;padding:28px 20px;text-align:center;min-height:170px;
-  display:flex;flex-direction:column;justify-content:center;gap:8px;
-}
-.flash-word{font-size:1.5rem;font-weight:750;color:var(--primary-dark)}
-html[data-theme="dark"] .flash-word{color:var(--primary)}
-.flash-ipa{color:var(--text-soft);font-size:.92rem}
-.flash-back{font-size:.95rem}
-.flash-back .vi{color:var(--good);font-weight:650;font-size:1.05rem}
-
-/* ============ DASHBOARD ============ */
-.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
-.stat{
-  background:var(--card-2);border:1px solid var(--border);border-radius:12px;padding:13px 14px;
-}
-.stat .k{font-size:.75rem;color:var(--text-soft);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
-.stat .v{font-size:1.35rem;font-weight:750;margin-top:3px;color:var(--primary-dark)}
-html[data-theme="dark"] .stat .v{color:var(--primary)}
-
-/* ============ REVIEW LIST ============ */
-.wrong-item{
-  border-left:3px solid var(--bad);background:var(--bad-soft);border-radius:8px;
-  padding:10px 13px;margin-bottom:10px;font-size:.88rem;
-}
-.wrong-item .qtext{font-weight:650;margin-bottom:4px}
-.wrong-item .yours{color:var(--bad)}
-.wrong-item .right{color:var(--good);font-weight:650}
-
-/* ============ MISC ============ */
-details.reveal{
-  border:1px solid var(--border);border-radius:10px;padding:9px 13px;background:var(--card-2);
-  font-size:.88rem;margin-top:8px;
-}
-details.reveal summary{cursor:pointer;font-weight:600;color:var(--primary-dark)}
-html[data-theme="dark"] details.reveal summary{color:var(--primary)}
-details.reveal p{margin:8px 0 0}
-.tagline{
-  display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;
-}
-.tag{
-  font-size:.76rem;background:var(--primary-soft);color:var(--primary-dark);
-  padding:2px 9px;border-radius:99px;font-weight:600;
-}
-html[data-theme="dark"] .tag{color:var(--primary)}
-.prevnext{display:flex;justify-content:space-between;gap:10px;margin-top:6px}
-.toast{
-  position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
-  background:var(--text);color:var(--bg-alt);padding:10px 20px;border-radius:99px;
-  font-size:.86rem;font-weight:600;z-index:200;opacity:0;pointer-events:none;transition:opacity .25s;
-}
-.toast.show{opacity:1}
-.checkline{display:flex;align-items:center;gap:9px;font-size:.88rem;margin:6px 0}
+  @media (max-width:520px){
+    .card-face{padding:22px 16px; gap:11px}
+    .nav{padding:11px 16px; font-size:13px}
+    .nav.primary{min-width:120px}
+    .flip-hint{bottom:10px}
+  }
 </style>
 </head>
-<body class="nav-closed">
+<body>
 
-<div id="backdrop"></div>
+<header>
+  <h1>Unit 13 · Global Problems</h1>
+  <p>Flashcards phát âm chuẩn Anh–Mỹ 🇺🇸 &amp; Anh–Anh 🇬🇧</p>
+</header>
 
-<!-- ===================== SIDEBAR ===================== -->
-<aside id="sidebar">
-  <div class="brand">
-    <div class="brand-mark">13</div>
-    <div class="brand-text"><strong>Global Problems</strong><span>B1–B2 English</span></div>
+<div class="wrap" id="chips"></div>
+
+<div class="wrap">
+  <div class="seg" id="accentSeg">
+    <button data-accent="en-US" class="active">🇺🇸 Anh–Mỹ</button>
+    <button data-accent="en-GB">🇬🇧 Anh–Anh</button>
   </div>
-  <nav id="nav">
-    <button class="nav-item" data-page="home">
-      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5 8 2.5l6 5V14a.5.5 0 0 1-.5.5h-11A.5.5 0 0 1 2 14z"/></svg>
-      Home / Dashboard</button>
-
-    <div class="nav-group-label">Lesson</div>
-    <button class="nav-item" data-page="lessonA">
-      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2.5h10v11H3z"/><path d="M5.5 5.5h5M5.5 8h5M5.5 10.5h3"/></svg>
-      A · Disasters &amp; tragedies</button>
-    <button class="nav-item" data-page="lessonB">
-      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2.5h10v11H3z"/><path d="M5.5 5.5h5M5.5 8h5M5.5 10.5h3"/></svg>
-      B · People involved</button>
-    <button class="nav-item" data-page="lessonC">
-      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2.5h10v11H3z"/><path d="M5.5 5.5h5M5.5 8h5M5.5 10.5h3"/></svg>
-      C · Diseases &amp; epidemics</button>
-
-    <div class="nav-group-label">Study tools</div>
-    <button class="nav-item" data-page="notebook">
-      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 2.5h9v11h-9z"/><path d="M6.5 2.5v11"/></svg>
-      Vocabulary notebook</button>
-    <button class="nav-item" data-page="practice">
-      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5 6 12l7.5-7.5"/></svg>
-      Practice</button>
-    <button class="nav-item" data-page="exercises">
-      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2.5h10v11H3z"/><path d="M5.5 5.5h5M5.5 8h5"/></svg>
-      Textbook exercises 13.1–13.5</button>
-    <button class="nav-item" data-page="review">
-      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2a6 6 0 1 0 6 6"/><path d="M14 2.5v4h-4"/></svg>
-      Error review</button>
-    <button class="nav-item" data-page="notes">
-      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2.5h10v11H3z"/><path d="M5.5 6h5M5.5 9h3"/></svg>
-      Personal notes</button>
-    <button class="nav-item" data-page="dashboard">
-      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13V8M8 13V3M13 13V10"/></svg>
-      Progress dashboard</button>
-  </nav>
-  <div class="sidebar-foot">
-    <div class="mp-label"><span>Vocabulary learned</span><span id="sideProgressText">0%</span></div>
-    <div class="bar"><i id="sideProgressBar"></i></div>
-  </div>
-</aside>
-
-<!-- ===================== MAIN ===================== -->
-<div id="main">
-  <div id="scrollProgress"></div>
-
-  <header id="topbar">
-    <button id="menuBtn" class="icon-btn" aria-label="Toggle menu">
-      <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11"/></svg>
-    </button>
-    <div id="crumb">Home</div>
-    <div class="topbar-right">
-      <input id="globalSearch" type="search" placeholder="Search vocabulary…" aria-label="Search vocabulary">
-      <button id="themeBtn" class="icon-btn" aria-label="Toggle dark mode">
-        <svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2.5a5.5 5.5 0 1 0 5.5 5.5A4.2 4.2 0 0 1 8 2.5z"/></svg>
-      </button>
-    </div>
-  </header>
-
-  <div id="hlLegend" hidden>
-    <strong style="color:var(--text)">Highlighting:</strong>
-    <div class="legend-swatches">
-      <span class="sw-item"><i class="sw-dot sw-yellow"></i>important information</span>
-      <span class="sw-item"><i class="sw-dot sw-blue"></i>vocabulary</span>
-      <span class="sw-item"><i class="sw-dot sw-green"></i>example sentences</span>
-      <span class="sw-item"><i class="sw-dot sw-pink"></i>difficult concepts</span>
-    </div>
-    <span class="small">Select any lesson text to open the highlighter.</span>
-    <button id="clearAllHl" class="btn sm danger" style="margin-left:auto">Clear all highlights</button>
-  </div>
-
-  <main id="content">
-
-    <!-- ============ HOME ============ -->
-    <section class="page active" id="page-home">
-      <div class="page-head">
-        <span class="pill">Unit 13</span>
-        <h1>Global Problems</h1>
-        <p class="lead">An interactive electronic lesson for Vietnamese English majors (B1–B2). Disasters, the people involved, and diseases &amp; epidemics.</p>
-      </div>
-
-      <div class="card">
-        <h2>Welcome</h2>
-        <p class="hlblock" data-hl="home-1">This e-lesson follows the textbook Unit 13 in its original order. Each lesson has objectives, a lead-in, vocabulary presentation, explanations, examples, a quick check and a review. Everything you write, highlight or bookmark is saved in this browser — no account and no internet connection are needed.</p>
-        <div class="tagline">
-          <span class="tag">3 lesson sections</span>
-          <span class="tag">47 vocabulary items</span>
-          <span class="tag">Exercises 13.1–13.5</span>
-          <span class="tag">Works offline</span>
-        </div>
-        <div class="btn-row">
-          <button class="btn primary" data-goto="lessonA">Start Lesson A</button>
-          <button class="btn" data-goto="notebook">Vocabulary notebook</button>
-          <button class="btn" data-goto="dashboard">My progress</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Your progress at a glance</h2>
-        <div class="stat-grid">
-          <div class="stat"><div class="k">Vocabulary learned</div><div class="v" id="homeLearned">0 / 47</div></div>
-          <div class="stat"><div class="k">Lesson sections</div><div class="v" id="homeSections">0 / 3</div></div>
-          <div class="stat"><div class="k">Best quiz score</div><div class="v" id="homeBest">—</div></div>
-          <div class="stat"><div class="k">Bookmarks</div><div class="v" id="homeBm">0</div></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>How to use this lesson</h2>
-        <ol class="small">
-          <li><b>Read the lesson sections</b> in order (A → B → C). Use the sidebar or the Previous / Next buttons.</li>
-          <li><b>Listen to a word</b> — click the 🔊 icon on any vocabulary card to hear it in American English (uses your device's built-in speech engine).</li>
-          <li><b>Highlight</b> any lesson text with your mouse or finger, then choose a colour in the floating toolbar.</li>
-          <li><b>Write notes</b> in the Personal notes page — they save automatically.</li>
-          <li><b>Study vocabulary</b> in the notebook: search, filter, bookmark, mark as learned, use flashcards.</li>
-          <li><b>Do the exercises</b> 13.1–13.5, then review your mistakes in the Error review page.</li>
-        </ol>
-        <div class="hr"></div>
-        <p class="small muted"><b>Note on audio:</b> pronunciation is provided by your device's text-to-speech engine (en-US voice). On some devices this may not be available; in that case the speaker button will not respond.</p>
-      </div>
-    </section>
-
-    <!-- ============ LESSON A ============ -->
-    <section class="page" id="page-lessonA">
-      <div class="page-head">
-        <span class="pill">Lesson A</span>
-        <h1>Disasters and tragedies</h1>
-        <p class="lead">Natural disasters and disasters caused by people — vocabulary, pronunciation, and the verbs we use with them.</p>
-      </div>
-
-      <div class="card">
-        <h2>Learning objectives</h2>
-        <ul class="small">
-          <li>Name 18 types of disaster and tragedy in English and pronounce the difficult ones correctly (<i>drought</i>, <i>volcano</i>, <i>famine</i>, <i>tornado</i>).</li>
-          <li>Use <b>injure</b> with people and <b>damage</b> with things.</li>
-          <li>Use the verbs <i>erupt, spread, starve, shake, suffer, break out, sweep through</i> in natural sentences.</li>
-          <li>Explain what <i>be feared dead</i> means in a news report.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>1 · Lead-in</h2>
-        <p class="hlblock" data-hl="a-leadin">Read this news sentence: “A big earthquake shook the city at noon today.” Which other disasters can you name in English? Write down five before you continue.</p>
-        <details class="reveal"><summary>Show a suggested answer</summary>
-          <p>flood, drought, volcano, famine, landslide, epidemic, hurricane, tornado, typhoon, war …</p>
-        </details>
-      </div>
-
-      <div class="card">
-        <h2>2 · Vocabulary presentation</h2>
-        <p class="muted small">Natural disasters (not caused by human beings)</p>
-        <div class="vocab-grid" data-vocab-group="A-natural"></div>
-        <div class="hr"></div>
-        <p class="muted small">Disasters and tragedies caused by people</p>
-        <div class="vocab-grid" data-vocab-group="A-human"></div>
-        <div class="hr"></div>
-        <p class="muted small">Verbs and phrases connected with these words</p>
-        <div class="vocab-grid" data-vocab-group="A-verbs"></div>
-      </div>
-
-      <div class="card">
-        <h2>3 · Explanation</h2>
-        <h3>injure vs damage</h3>
-        <p class="hlblock" data-hl="a-injure"><b>Injure</b> /ˈɪndʒə/ is used about people. <b>Damage</b> /ˈdæmɪdʒ/ is used about things and property.</p>
-        <p class="hlblock" data-hl="a-injure-ex">Compare: 200 people were injured. Many buildings were damaged.</p>
-        <p class="small muted">Common mistake: ✗ “Many buildings were injured.” ✓ “Many buildings were damaged.” — Buildings cannot be injured.</p>
-
-        <div class="hr"></div>
-        <h3>The verbs in the original examples</h3>
-        <p class="hlblock" data-hl="a-erupt"><b>erupt</b> /ɪˈrʌpt/ — used about a volcano: hot rock and gases come out. A volcano has erupted in Indonesia.</p>
-        <p class="hlblock" data-hl="a-feared"><b>be feared dead</b> /bi fɪəd ded/ — a news-report phrase: people think (but do not yet know for sure) that these people are dead. Hundreds are feared dead.</p>
-        <p class="hlblock" data-hl="a-spread"><b>spread</b> /spred/ — to move and reach more places or people. The past form is the same: spread – spread. The flu epidemic spread rapidly throughout the country.</p>
-        <p class="hlblock" data-hl="a-starve"><b>starve</b> /stɑːv/ — to suffer or die because there is not enough food. Millions are starving as a result of the famine.</p>
-        <p class="hlblock" data-hl="a-shake"><b>shake – shook – shaken</b> /ʃeɪk – ʃʊk – ˈʃeɪkən/ — to move suddenly and violently. A big earthquake shook the city at noon today.</p>
-        <p class="hlblock" data-hl="a-suffer"><b>suffer</b> /ˈsʌfə/ — to experience something bad. The area is suffering its worst drought for many years.</p>
-        <p class="hlblock" data-hl="a-breakout"><b>break out</b> /breɪk ˈaʊt/ — used about war, fighting, disease or fire: to start suddenly. Break out – broke out – broken out. Civil war has broken out in the north of the country.</p>
-        <p class="hlblock" data-hl="a-sweep"><b>sweep through</b> /swiːp θruː/ — to move quickly and with force through a place. Sweep – swept – swept. A tornado swept through the islands yesterday.</p>
-        <div class="worked" style="margin-top:14px">
-          <b>Grammar pattern to remember:</b> <i>a disaster + verb</i> — “A volcano <b>has erupted</b>.” · “Civil war <b>has broken out</b>.” · “The epidemic <b>spread</b> rapidly.” Use the present perfect when the news is recent and the result is still important now.
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>4 · Examples from the textbook</h2>
-        <ul class="small hlblock" data-hl="a-exlist">
-          <li>A volcano has erupted in Indonesia.</li>
-          <li>Hundreds are feared dead.</li>
-          <li>The flu epidemic spread rapidly throughout the country.</li>
-          <li>Millions are starving as a result of the famine.</li>
-          <li>A big earthquake shook the city at noon today.</li>
-          <li>The area is suffering its worst drought for many years.</li>
-          <li>Civil war has broken out in the north of the country.</li>
-          <li>A tornado swept through the islands yesterday.</li>
-          <li>200 people were injured. Many buildings were damaged.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>5 · Check your understanding</h2>
-        <div id="miniA"></div>
-      </div>
-
-      <div class="card">
-        <h2>6 · Section review</h2>
-        <ul class="small">
-          <li><b>Natural disasters:</b> earthquake, flood, drought, volcano, famine, landslide, epidemic, hurricane, tornado, typhoon, tropical storm.</li>
-          <li><b>Disasters caused by people:</b> explosion, major accident, incident, plane crash, war, civil war.</li>
-          <li><b>injure</b> → people; <b>damage</b> → things.</li>
-          <li><b>Key verbs:</b> erupt, spread, starve, shake (shook, shaken), suffer, break out, sweep through.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>7 · Practice</h2>
-        <div id="pracA"></div>
-      </div>
-
-      <div class="card">
-        <div class="checkline">
-          <input type="checkbox" id="doneA" data-complete="lessonA">
-          <label for="doneA">Mark Lesson A as completed</label>
-        </div>
-        <div class="prevnext">
-          <button class="btn" data-goto="home">← Home</button>
-          <button class="btn primary" data-goto="lessonB">Lesson B →</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ LESSON B ============ -->
-    <section class="page" id="page-lessonB">
-      <div class="page-head">
-        <span class="pill">Lesson B</span>
-        <h1>People involved in disasters and tragedies</h1>
-        <p class="lead">casualty · victim · survivor · refugee · migrant · the dead · the wounded</p>
-      </div>
-
-      <div class="card">
-        <h2>Learning objectives</h2>
-        <ul class="small">
-          <li>Use the seven words for people correctly and count them properly (casualties, refugees …).</li>
-          <li>Explain the difference between a <i>casualty</i>, a <i>victim</i> and a <i>survivor</i>.</li>
-          <li>Explain the difference between a <i>refugee</i> and a <i>migrant</i>.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>1 · Lead-in</h2>
-        <p class="hlblock" data-hl="b-leadin">A building collapses in an earthquake. Some people die, some are hurt, some walk out alive, and some have lost their homes. How many different English words do you need to talk about all of these people?</p>
-        <details class="reveal"><summary>Show a suggested answer</summary>
-          <p>the dead, the wounded, casualties, victims, survivors — and, if they must leave their country, refugees or migrants.</p>
-        </details>
-      </div>
-
-      <div class="card">
-        <h2>2 · Vocabulary presentation</h2>
-        <div class="vocab-grid" data-vocab-group="B-people"></div>
-      </div>
-
-      <div class="card">
-        <h2>3 · Explanation — what is the difference?</h2>
-        <p class="hlblock" data-hl="b-compare"><b>casualty</b> — a person who is killed or injured in an accident or war. It counts both the dead and the injured: “300 casualties” can mean 200 dead and 100 injured.</p>
-        <p class="hlblock" data-hl="b-compare2"><b>victim</b> — a person who suffers as a result of something bad. Victims are not always physically hurt: “The real victims of civil war are children left without parents.”</p>
-        <p class="hlblock" data-hl="b-compare3"><b>survivor</b> — a person who lives through a disaster when other people die: “There were only three survivors. All the other passengers were reported dead.”</p>
-        <p class="hlblock" data-hl="b-compare4"><b>refugee</b> — a person who has escaped from their own country because of a war or another disaster: “Thousands of refugees have crossed the border looking for food and shelter.”</p>
-        <p class="hlblock" data-hl="b-compare5"><b>migrant</b> — a person who travels from one country to another, often to find work or a better life. Unlike a refugee, a migrant is not necessarily escaping danger: “Millions of migrants enter the country each year, looking for a better life.”</p>
-        <p class="hlblock" data-hl="b-compare6"><b>the dead / the wounded</b> — adjectives used as plural nouns: “the dead and wounded were flown out in helicopters”. <i>Wounded</i> means injured in a battle or by a weapon.</p>
-
-        <div class="worked" style="margin-top:14px">
-          <b>Grammar notes</b><br>
-          • Countable: <i>a casualty, casualties; a victim, victims; a survivor, survivors; a refugee, refugees; a migrant, migrants.</i><br>
-          • Plural only with <i>the</i>: <i>the dead, the wounded</i> — “The wounded <b>were</b> taken to hospital.” (never “a wounded”)<br>
-          • Prepositions: <i>a victim <b>of</b> something</i>, <i>a survivor <b>of</b> a crash</i>, <i>refugees <b>from</b> a war</i>, <i>migrants <b>into / to</b> a country</i>.
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>4 · Examples from the textbook</h2>
-        <ul class="small hlblock" data-hl="b-exlist">
-          <li>The explosion resulted in 300 casualties.</li>
-          <li>The real victims of civil war are children left without parents.</li>
-          <li>There were only three survivors. All the other passengers were reported dead.</li>
-          <li>Thousands of refugees have crossed the border looking for food and shelter.</li>
-          <li>Millions of migrants enter the country each year, looking for a better life.</li>
-          <li>During the battle, the dead and wounded were flown out in helicopters.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>5 · Check your understanding</h2>
-        <div id="miniB"></div>
-      </div>
-
-      <div class="card">
-        <h2>6 · Section review</h2>
-        <ul class="small">
-          <li><b>casualty</b> = dead + injured (in an accident or war).</li>
-          <li><b>victim</b> = anyone who suffers the results.</li>
-          <li><b>survivor</b> = someone who lives through a disaster.</li>
-          <li><b>refugee</b> = someone who has escaped their country because of war or disaster.</li>
-          <li><b>migrant</b> = someone who moves to another country, often for work.</li>
-          <li><b>the dead / the wounded</b> = plural groups, always with <i>the</i>.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>7 · Practice</h2>
-        <div id="pracB"></div>
-      </div>
-
-      <div class="card">
-        <div class="checkline">
-          <input type="checkbox" id="doneB" data-complete="lessonB">
-          <label for="doneB">Mark Lesson B as completed</label>
-        </div>
-        <div class="prevnext">
-          <button class="btn" data-goto="lessonA">← Lesson A</button>
-          <button class="btn primary" data-goto="lessonC">Lesson C →</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ LESSON C ============ -->
-    <section class="page" id="page-lessonC">
-      <div class="page-head">
-        <span class="pill">Lesson C</span>
-        <h1>Diseases and epidemics</h1>
-        <p class="lead">rabies · AIDS · HIV · malaria · cholera · typhoid — plus the words we use to talk about how diseases spread.</p>
-      </div>
-
-      <div class="card">
-        <h2>Learning objectives</h2>
-        <ul class="small">
-          <li>Name six diseases and say how each one is transmitted.</li>
-          <li>Explain clearly that <b>HIV</b> is the virus and <b>AIDS</b> is the illness.</li>
-          <li>Understand four authentic English newspaper headlines about disease.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>1 · Lead-in</h2>
-        <p class="hlblock" data-hl="c-leadin">Look at this headline: “Rabies out of control in many parts of Asia.” What does <i>out of control</i> mean? Which disease would you be most worried about in a hot country with poor water supplies?</p>
-        <details class="reveal"><summary>Show a suggested answer</summary>
-          <p><i>Out of control</i> = nobody can stop it. In a hot country with poor water supplies, cholera and typhoid are the biggest danger because they spread through contaminated food and water.</p>
-        </details>
-      </div>
-
-      <div class="card">
-        <h2>2 · Vocabulary presentation — the diseases</h2>
-        <div class="vocab-grid" data-vocab-group="C-diseases"></div>
-        <div class="hr"></div>
-        <p class="muted small">Words that help you talk about diseases</p>
-        <div class="vocab-grid" data-vocab-group="C-words"></div>
-      </div>
-
-      <div class="card">
-        <h2>3 · Explanation — be accurate</h2>
-        <p class="hlblock" data-hl="c-hiv"><b>HIV is not the same as AIDS.</b> HIV (human immunodeficiency virus) is the virus. AIDS (acquired immune deficiency syndrome) is the serious illness that can develop later because HIV damages the immune system. A person can have HIV for many years without having AIDS.</p>
-        <p class="hlblock" data-hl="c-malaria"><b>Malaria</b> is transmitted by the bite of an infected mosquito. It is not spread from one person to another by touch or by the air.</p>
-        <p class="hlblock" data-hl="c-cholera"><b>Cholera and typhoid</b> are often spread through contaminated food or water — that is, food or water that carries the bacteria.</p>
-        <p class="hlblock" data-hl="c-rabies"><b>Rabies</b> can be transmitted through the bite or the saliva of an infected animal, for example a dog or a fox. It is a very serious disease.</p>
-        <p class="hlblock" data-hl="c-care">Note: this lesson teaches vocabulary, not medical advice. If you need medical information, ask a doctor.</p>
-      </div>
-
-      <div class="card">
-        <h2>4 · Examples — newspaper headlines</h2>
-        <ul class="small hlblock" data-hl="c-headlines">
-          <li>Rabies out of control in many parts of Asia.</li>
-          <li>New AIDS unit to be opened this month.</li>
-          <li>New malaria drug tested.</li>
-          <li>Cholera and typhoid injections not needed, says Tourism Minister.</li>
-        </ul>
-        <p class="small muted" style="margin-top:10px">Headlines often drop small words. “New malaria drug tested” = “<i>A</i> new malaria drug <i>has been</i> tested.” “New AIDS unit to be opened” = “<i>A</i> new AIDS unit <i>is</i> to be opened.”</p>
-      </div>
-
-      <div class="card">
-        <h2>5 · Check your understanding</h2>
-        <div id="miniC"></div>
-      </div>
-
-      <div class="card">
-        <h2>6 · Section review</h2>
-        <ul class="small">
-          <li><b>rabies</b> — from the bite or saliva of an infected animal.</li>
-          <li><b>HIV / AIDS</b> — HIV is the virus; AIDS is the illness.</li>
-          <li><b>malaria</b> — from the bite of an infected mosquito.</li>
-          <li><b>cholera / typhoid</b> — often from contaminated food and water.</li>
-          <li><b>epidemic</b> — a disease affecting large numbers of people.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>7 · Practice</h2>
-        <div id="pracC"></div>
-      </div>
-
-      <div class="card">
-        <div class="checkline">
-          <input type="checkbox" id="doneC" data-complete="lessonC">
-          <label for="doneC">Mark Lesson C as completed</label>
-        </div>
-        <div class="prevnext">
-          <button class="btn" data-goto="lessonB">← Lesson B</button>
-          <button class="btn primary" data-goto="exercises">Textbook exercises →</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ NOTEBOOK ============ -->
-    <section class="page" id="page-notebook">
-      <div class="page-head">
-        <span class="pill">Study tools</span>
-        <h1>Vocabulary notebook</h1>
-        <p class="lead">Search, filter, bookmark, and mark words as learned. Click 🔊 to hear a word in American English.</p>
-      </div>
-
-      <div class="card">
-        <div class="toolbar-row">
-          <input id="nbSearch" class="field" type="search" placeholder="English or Vietnamese…" style="flex:1;min-width:180px">
-          <select id="nbSection" class="field">
-            <option value="all">All sections</option>
-            <option value="A">Lesson A — Disasters</option>
-            <option value="B">Lesson B — People</option>
-            <option value="C">Lesson C — Diseases</option>
-          </select>
-          <select id="nbPos" class="field">
-            <option value="all">All word classes</option>
-            <option value="noun">noun</option>
-            <option value="verb">verb</option>
-            <option value="phrase">phrase</option>
-          </select>
-          <select id="nbView" class="field">
-            <option value="all">All words</option>
-            <option value="bm">Bookmarked only</option>
-            <option value="learned">Learned only</option>
-            <option value="todo">Not learned yet</option>
-          </select>
-        </div>
-        <div class="toolbar-row">
-          <label class="chk"><input type="checkbox" id="nbHideVi"> Practice mode (hide Vietnamese)</label>
-          <button class="btn sm" id="nbFlash">Flashcards</button>
-          <button class="btn sm" id="nbReset">Reset filters</button>
-          <span class="muted small" id="nbCount"></span>
-        </div>
-      </div>
-
-      <div class="card" id="flashWrap" style="display:none">
-        <h2>Flashcards</h2>
-        <div class="flash" id="flashCard">
-          <div class="flash-word" id="flashWord">—</div>
-          <div class="flash-ipa" id="flashIpa"></div>
-          <div class="flash-back" id="flashBack" hidden></div>
-        </div>
-        <div class="btn-row">
-          <button class="btn sm" id="flashPrev">← Previous</button>
-          <button class="btn sm primary" id="flashFlip">Show / hide answer</button>
-          <button class="btn sm" id="flashNext">Next →</button>
-          <button class="btn sm" id="flashShuffle">Shuffle</button>
-          <button class="btn sm" id="flashSpeak">🔊 Listen</button>
-          <button class="btn sm ghost" id="flashClose">Close</button>
-        </div>
-        <p class="muted small" id="flashPos" style="margin-top:10px"></p>
-      </div>
-
-      <div id="nbList"></div>
-    </section>
-
-    <!-- ============ PRACTICE ============ -->
-    <section class="page" id="page-practice">
-      <div class="page-head">
-        <span class="pill">Study tools</span>
-        <h1>Practice</h1>
-        <p class="lead">A matching game and a mixed quiz to help you remember the unit.</p>
-      </div>
-
-      <div class="card">
-        <h2>1 · Matching game</h2>
-        <p class="muted small">Click an English word on the left, then its Vietnamese meaning on the right.</p>
-        <div class="match" style="margin-top:12px">
-          <div class="mcol" id="mLeft"></div>
-          <div class="mcol" id="mRight"></div>
-        </div>
-        <div class="btn-row">
-          <button class="btn sm" id="matchNew">New set</button>
-          <span class="muted small" id="matchStatus"></span>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>2 · Mixed quiz</h2>
-        <div id="mixedQuiz"></div>
-      </div>
-    </section>
-
-    <!-- ============ EXERCISES ============ -->
-    <section class="page" id="page-exercises">
-      <div class="page-head">
-        <span class="pill">Textbook</span>
-        <h1>Exercises 13.1 – 13.5</h1>
-        <p class="lead">The complete textbook exercises. Answers are revealed only after you press “Check answers”.</p>
-      </div>
-      <div id="exWrap"></div>
-      <div class="card">
-        <button class="btn ghost" data-goto="review">Go to Error review →</button>
-      </div>
-    </section>
-
-    <!-- ============ ERROR REVIEW ============ -->
-    <section class="page" id="page-review">
-      <div class="page-head">
-        <span class="pill">Study tools</span>
-        <h1>Error review</h1>
-        <p class="lead">Questions you answered incorrectly. They disappear when you get them right.</p>
-      </div>
-      <div class="card">
-        <div id="reviewList"></div>
-        <div class="btn-row">
-          <button class="btn sm danger" id="reviewClear">Clear review list</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ NOTES ============ -->
-    <section class="page" id="page-notes">
-      <div class="page-head">
-        <span class="pill">Study tools</span>
-        <h1>Personal notes</h1>
-        <p class="lead">Notes save automatically in this browser.</p>
-      </div>
-      <div class="card">
-        <div class="btn-row" style="margin-top:0">
-          <button class="btn primary" id="exportNotes">Export notes (.txt)</button>
-          <button class="btn danger" id="deleteNotes">Delete all notes</button>
-        </div>
-      </div>
-      <div class="card" id="notesWrap"></div>
-    </section>
-
-    <!-- ============ DASHBOARD ============ -->
-    <section class="page" id="page-dashboard">
-      <div class="page-head">
-        <span class="pill">Progress</span>
-        <h1>Progress dashboard</h1>
-        <p class="lead">Everything is stored locally in this browser.</p>
-      </div>
-
-      <div class="card">
-        <h2>Overview</h2>
-        <div class="stat-grid" id="dashStats"></div>
-      </div>
-
-      <div class="card">
-        <h2>Lesson sections</h2>
-        <div id="dashSections"></div>
-      </div>
-
-      <div class="card">
-        <h2>Quiz results</h2>
-        <div id="dashQuiz"></div>
-      </div>
-
-      <div class="card">
-        <h2>Reset</h2>
-        <p class="small muted">This deletes your progress, bookmarks, notes and highlights from this browser. It cannot be undone.</p>
-        <button class="btn danger" id="resetAll">Reset all data</button>
-      </div>
-    </section>
-
-  </main>
+  <label class="switch"><input type="checkbox" id="autoPlay"> Tự động phát âm</label>
+  <button class="ghost" id="shuffleBtn">🔀 Xáo trộn</button>
 </div>
 
-<!-- floating highlight toolbar -->
-<div id="hlToolbar" hidden>
-  <button class="sw sw-yellow" data-color="yellow" title="Important information" aria-label="Yellow highlight"></button>
-  <button class="sw sw-blue" data-color="blue" title="Vocabulary" aria-label="Blue highlight"></button>
-  <button class="sw sw-green" data-color="green" title="Example sentences" aria-label="Green highlight"></button>
-  <button class="sw sw-pink" data-color="pink" title="Difficult concepts" aria-label="Pink highlight"></button>
-  <span class="sep"></span>
-  <button class="hl-btn" id="hlRemove" title="Remove highlight">✕</button>
+<div class="scene">
+  <div class="card" id="card">
+    <div class="card-inner">
+      <div class="card-face card-front" id="front"></div>
+      <div class="card-face card-back" id="back"></div>
+    </div>
+  </div>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="progress">
+  <div class="bar"><div class="fill" id="fill"></div></div>
+  <div class="counter" id="counter">1 / 1</div>
+</div>
+
+<div class="controls">
+  <button class="nav" id="prevBtn">← Trước</button>
+  <button class="nav primary" id="flipBtn">Lật thẻ</button>
+  <button class="nav" id="nextBtn">Sau →</button>
+</div>
+
+<p class="hint">
+  Phím tắt: <kbd>Space</kbd> lật thẻ · <kbd>←</kbd> <kbd>→</kbd> chuyển thẻ · <kbd>1</kbd> nghe US · <kbd>2</kbd> nghe UK
+</p>
+<p class="note" id="voiceNote"></p>
 
 <script>
-"use strict";
-
 /* =========================================================
-   0. STORAGE
+   1. DỮ LIỆU TỪ VỰNG – Unit 13 Global Problems
    ========================================================= */
-const KEY = 'u13_state_v1';
-const DB = {
-  completed:{}, learned:{}, bookmarks:{}, notes:{}, highlights:{},
-  quiz:{attempts:0,last:null,best:null,wrong:{}},
-  checked:{}, theme:'light'
+const CATS = {
+  disaster: 'A · Thảm họa & bi kịch',
+  verb:     'B · Động từ & cụm động từ',
+  people:   'C · Người trong thảm họa',
+  disease:  'D · Bệnh tật & dịch bệnh'
 };
-function loadDB(){
-  try{
-    const raw = localStorage.getItem(KEY);
-    if(raw){
-      const o = JSON.parse(raw);
-      if(o && typeof o === 'object') Object.assign(DB, o);
-    }
-  }catch(e){ /* corrupted storage – start fresh */ }
-  DB.completed = DB.completed || {};
-  DB.learned   = DB.learned   || {};
-  DB.bookmarks = DB.bookmarks || {};
-  DB.notes     = DB.notes     || {};
-  DB.highlights= DB.highlights|| {};
-  DB.checked   = DB.checked   || {};
-  DB.quiz      = Object.assign({attempts:0,last:null,best:null,wrong:{}}, DB.quiz||{});
-  DB.quiz.wrong= DB.quiz.wrong|| {};
-}
-let saveTimer = null;
-function saveDB(){
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(()=>{
-    try{ localStorage.setItem(KEY, JSON.stringify(DB)); }catch(e){}
-  }, 120);
-}
-function saveNow(){
-  clearTimeout(saveTimer);
-  try{ localStorage.setItem(KEY, JSON.stringify(DB)); }catch(e){}
-}
 
-/* =========================================================
-   1. HELPERS
-   ========================================================= */
-const $  = (s, r) => (r||document).querySelector(s);
-const $$ = (s, r) => Array.prototype.slice.call((r||document).querySelectorAll(s));
-function esc(s){
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-function norm(s){
-  return String(s||'').toLowerCase().trim()
-    .replace(/\s+/g,' ')
-    .replace(/[.!?]$/,'')
-    .replace(/^(a |an |the )/,'');
-}
-function toast(msg){
-  const t = $('#toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(t._h);
-  t._h = setTimeout(()=>t.classList.remove('show'), 1900);
-}
+const DATA = [
+  /* ---------- A. Disasters and tragedies ---------- */
+  {w:'earthquake', p:'n', ipa:'/ˈɜːθkweɪk/', vi:'động đất', ex:'A big earthquake shook the city at noon today.', c:'disaster'},
+  {w:'flood', p:'n', ipa:'/flʌd/', vi:'lũ lụt', ex:'The flood damaged many houses.', c:'disaster'},
+  {w:'drought', p:'n', ipa:'/draʊt/', vi:'hạn hán', ex:'The area is suffering its worst drought for many years.', c:'disaster'},
+  {w:'volcano', p:'n', ipa:'/vɒlˈkeɪnəʊ/', vi:'núi lửa', ex:'A volcano has erupted in Indonesia.', c:'disaster'},
+  {w:'lava', p:'n', ipa:'/ˈlɑːvə/', vi:'dung nham', ex:'The lava flow destroyed three villages.', c:'disaster'},
+  {w:'famine', p:'n', ipa:'/ˈfæmɪn/', vi:'nạn đói', ex:'Millions are starving as a result of the famine.', c:'disaster'},
+  {w:'landslide', p:'n', ipa:'/ˈlændslaɪd/', vi:'sạt lở đất', ex:'The landslide blocked the mountain road.', c:'disaster'},
+  {w:'epidemic', p:'n', ipa:'/ˌepɪˈdemɪk/', vi:'dịch bệnh', ex:'The flu epidemic spread rapidly throughout the country.', c:'disaster'},
+  {w:'explosion', p:'n', ipa:'/ɪkˈspləʊʒən/', vi:'vụ nổ', ex:'The explosion resulted in 300 casualties.', c:'disaster'},
+  {w:'major accident', p:'n phr', ipa:'/ˌmeɪdʒər ˈæksɪdənt/', vi:'tai nạn nghiêm trọng', ex:'The major accident injured many people.', c:'disaster'},
+  {w:'incident', p:'n', ipa:'/ˈɪnsɪdənt/', vi:'sự cố, vụ việc', ex:'The incident caused widespread concern.', c:'disaster'},
+  {w:'plane crash', p:'n phr', ipa:'/ˈpleɪn kræʃ/', vi:'vụ rơi máy bay', ex:'The plane crash shocked the whole country.', c:'disaster'},
+  {w:'hurricane', p:'n', ipa:'/ˈhʌrɪkən/', vi:'bão cuồng phong', ex:'The hurricane destroyed several coastal villages.', c:'disaster'},
+  {w:'tornado', p:'n', ipa:'/tɔːˈneɪdəʊ/', vi:'lốc xoáy', ex:'A tornado swept through the islands yesterday.', c:'disaster'},
+  {w:'typhoon', p:'n', ipa:'/taɪˈfuːn/', vi:'bão nhiệt đới (Tây Bắc Thái Bình Dương)', ex:'The typhoon damaged many buildings.', c:'disaster'},
+  {w:'tropical storm', p:'n phr', ipa:'/ˌtrɒpɪkəl ˈstɔːm/', vi:'bão nhiệt đới', ex:'The tropical storm is approaching the coast.', c:'disaster'},
+  {w:'war', p:'n', ipa:'/wɔː(r)/', vi:'chiến tranh', ex:'Many families lost their homes during the war.', c:'disaster'},
+  {w:'civil war', p:'n phr', ipa:'/ˌsɪvəl ˈwɔː(r)/', vi:'nội chiến', ex:'Civil war has broken out in the north of the country.', c:'disaster'},
+  {w:'natural disaster', p:'n phr', ipa:'/ˌnætʃrəl dɪˈzɑːstə(r)/', vi:'thảm họa thiên nhiên', ex:'Earthquakes and floods are natural disasters.', c:'disaster'},
+  {w:'aftershock', p:'n', ipa:'/ˈɑːftəʃɒk/', vi:'dư chấn', ex:'The aftershock struck at 3.35 pm local time.', c:'disaster'},
+  {w:'gunfire', p:'n', ipa:'/ˈɡʌnfaɪə(r)/', vi:'tiếng súng', ex:'Gunfire could be heard all over the town.', c:'disaster'},
+  {w:'fireball', p:'n', ipa:'/ˈfaɪəbɔːl/', vi:'quả cầu lửa', ex:'Witnesses saw a fireball fall out of the sky.', c:'disaster'},
 
-/* =========================================================
-   1b. SPEECH (US English)
-   ========================================================= */
-let TTS_READY = false;
-function initTTS(){
-  if(!('speechSynthesis' in window)) return;
-  // Try to prime the voice list
-  try{
-    window.speechSynthesis.getVoices();
-    window.speechSynthesis.onvoiceschanged = function(){ TTS_READY = true; };
-  }catch(e){}
-}
-function speak(text){
-  if(!('speechSynthesis' in window)){
-    toast('Speech is not supported in this browser');
-    return;
-  }
-  try{
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(String(text || ''));
-    u.lang = 'en-US';
-    u.rate = 0.85;
-    u.pitch = 1;
-    u.volume = 1;
-    const voices = window.speechSynthesis.getVoices() || [];
-    let chosen = null;
-    // Prefer a US English voice
-    for(let i=0;i<voices.length;i++){
-      const v = voices[i];
-      const lang = (v.lang || '').toLowerCase();
-      if(lang === 'en-us' || lang === 'en_us' || lang.indexOf('en-us') === 0){
-        if(/samantha|zira|aria|siri|google us|allison|ava|susan/i.test(v.name)){
-          chosen = v; break;
-        }
-        if(!chosen) chosen = v;
-      }
-    }
-    if(!chosen){
-      for(let i=0;i<voices.length;i++){
-        if((voices[i].lang || '').toLowerCase().indexOf('en') === 0){ chosen = voices[i]; break; }
-      }
-    }
-    if(chosen) u.voice = chosen;
-    window.speechSynthesis.speak(u);
-  }catch(e){
-    toast('Could not play audio');
-  }
-}
+  /* ---------- B. Language help and related verbs ---------- */
+  {w:'injure', p:'v', ipa:'/ˈɪndʒə(r)/', vi:'làm bị thương', ex:'The accident injured three people.', c:'verb'},
+  {w:'injury', p:'n', ipa:'/ˈɪndʒəri/', vi:'thương tích', ex:'He suffered a serious injury.', c:'verb'},
+  {w:'damage', p:'v / n', ipa:'/ˈdæmɪdʒ/', vi:'làm hư hại; thiệt hại', ex:'The storm damaged several buildings.', c:'verb'},
+  {w:'erupt', p:'v', ipa:'/ɪˈrʌpt/', vi:'phun trào', ex:'The volcano erupted suddenly.', c:'verb'},
+  {w:'fear someone dead', p:'v phr', ipa:'/fɪə(r) ˈsʌmwʌn ded/', vi:'lo ngại ai đó đã thiệt mạng', ex:'Hundreds are feared dead.', c:'verb'},
+  {w:'spread', p:'v', ipa:'/spred/', vi:'lan rộng', ex:'The disease spread rapidly.', c:'verb'},
+  {w:'starve', p:'v', ipa:'/stɑːv/', vi:'chết đói, chịu đói', ex:'Many people are starving.', c:'verb'},
+  {w:'shake', p:'v', ipa:'/ʃeɪk/', vi:'làm rung chuyển', ex:'The earthquake shook the city.', c:'verb'},
+  {w:'suffer', p:'v', ipa:'/ˈsʌfə(r)/', vi:'chịu đựng, trải qua', ex:'The region suffered severe damage.', c:'verb'},
+  {w:'break out', p:'phr v', ipa:'/ˌbreɪk ˈaʊt/', vi:'bùng phát, bùng nổ', ex:'Civil war has broken out.', c:'verb'},
+  {w:'sweep through', p:'phr v', ipa:'/ˌswiːp ˈθruː/', vi:'quét qua', ex:'A tornado swept through the town.', c:'verb'},
+  {w:'explode', p:'v', ipa:'/ɪkˈspləʊd/', vi:'phát nổ', ex:'The bomb exploded.', c:'verb'},
+  {w:'clear', p:'v', ipa:'/klɪə(r)/', vi:'dọn thông, làm sạch', ex:'Workers cleared the road after the landslide.', c:'verb'},
+  {w:'recede', p:'v', ipa:'/rɪˈsiːd/', vi:'rút đi, giảm xuống', ex:'The floodwater began to recede.', c:'verb'},
+  {w:'defuse', p:'v', ipa:'/ˌdiːˈfjuːz/', vi:'vô hiệu hóa bom', ex:'Police defused the terrorist bomb.', c:'verb'},
+  {w:'heed', p:'v', ipa:'/hiːd/', vi:'chú ý và làm theo', ex:'People did not heed the flood warnings.', c:'verb'},
 
-/* =========================================================
-   2. VOCABULARY DATA
-   ========================================================= */
-const VOCAB = [
-  /* ---------- LESSON A : natural disasters ---------- */
-  {id:'earthquake', group:'A-natural', section:'A', word:'earthquake', ipa:'/ˈɜːθkweɪk/', pos:'noun', vi:'trận động đất',
-   defEn:'(the earth moves / trembles) a sudden violent shaking of the ground',
-   defVi:'động đất — mặt đất rung chuyển đột ngột do chuyển động của vỏ Trái Đất.',
-   ex:'A big earthquake shook the city at noon today.',
-   exVi:'Một trận động đất lớn đã làm rung chuyển thành phố vào trưa hôm nay.',
-   colloc:'a powerful / massive earthquake; an earthquake strikes / hits; an aftershock; the ground shakes / trembles',
-   note:'shake – shook – shaken: A big earthquake shook the city.'},
+  /* ---------- C. People involved in disasters ---------- */
+  {w:'casualty', p:'n', ipa:'/ˈkæʒuəlti/', vi:'người chết hoặc bị thương (trong tai nạn, chiến tranh, thảm họa)', ex:'The explosion resulted in 300 casualties.', c:'people'},
+  {w:'victim', p:'n', ipa:'/ˈvɪktɪm/', vi:'nạn nhân, người chịu hậu quả', ex:'Children are the real victims of civil war.', c:'people'},
+  {w:'survivor', p:'n', ipa:'/səˈvaɪvə(r)/', vi:'người sống sót', ex:'There were only three survivors.', c:'people'},
+  {w:'survival', p:'n', ipa:'/səˈvaɪvəl/', vi:'sự sống sót', ex:'Survival was difficult after the disaster.', c:'people'},
+  {w:'refugee', p:'n', ipa:'/ˌrefjuˈdʒiː/', vi:'người tị nạn', ex:'Thousands of refugees crossed the border.', c:'people'},
+  {w:'migrant', p:'n', ipa:'/ˈmaɪɡrənt/', vi:'người di cư', ex:'Millions of migrants enter the country each year.', c:'people'},
+  {w:'economic migrant', p:'n phr', ipa:'/ˌiːkəˈnɒmɪk ˈmaɪɡrənt/', vi:'người di cư vì lý do kinh tế', ex:'Economic migrants often move abroad to find work.', c:'people'},
+  {w:'the dead', p:'n phr', ipa:'/ðə ded/', vi:'những người đã chết', ex:'The dead were flown out in helicopters.', c:'people'},
+  {w:'the wounded', p:'n phr', ipa:'/ðə ˈwuːndɪd/', vi:'những người bị thương', ex:'The wounded received medical treatment.', c:'people'},
+  {w:'wounded', p:'adj', ipa:'/ˈwuːndɪd/', vi:'bị thương (trong chiến đấu / do vũ khí)', ex:'The wounded soldiers were taken to hospital.', c:'people'},
+  {w:'shelter', p:'n', ipa:'/ˈʃeltə(r)/', vi:'nơi trú ẩn', ex:'The refugees were looking for food and shelter.', c:'people'},
+  {w:'border', p:'n', ipa:'/ˈbɔːdə(r)/', vi:'biên giới', ex:'Thousands crossed the border.', c:'people'},
+  {w:'battlefield', p:'n', ipa:'/ˈbætlfiːld/', vi:'chiến trường', ex:'The dead and wounded were left on the battlefield.', c:'people'},
 
-  {id:'flood', group:'A-natural', section:'A', word:'flood', ipa:'/flʌd/', pos:'noun', vi:'trận lụt, lũ',
-   defEn:'(too much rain) a large amount of water covering land that is usually dry',
-   defVi:'lụt — nước tràn ngập vùng đất vốn khô ráo, thường do mưa quá nhiều.',
-   ex:'People had to stay on the upper floors and sometimes on the roofs of their homes during the flood.',
-   exVi:'Trong trận lụt, người dân phải ở trên tầng cao và đôi khi phải lên cả mái nhà.',
-   colloc:'a flash flood; flood warnings; be flooded; the flood water recedes',
-   note:'Verb: to flood (an area). “The village was flooded.”'},
-
-  {id:'drought', group:'A-natural', section:'A', word:'drought', ipa:'/draʊt/', pos:'noun', vi:'hạn hán',
-   defEn:'(no rain) a long period of dry weather when there is not enough water',
-   defVi:'hạn hán — thời gian dài không mưa, thiếu nước nghiêm trọng.',
-   ex:'The area is suffering its worst drought for many years.',
-   exVi:'Khu vực này đang trải qua đợt hạn hán tồi tệ nhất trong nhiều năm.',
-   colloc:'a severe / long drought; suffer a drought; drought relief',
-   note:'Pronunciation: the “gh” is silent — /draʊt/, not /drɔːt/.'},
-
-  {id:'volcano', group:'A-natural', section:'A', word:'volcano', ipa:'/vɒlˈkeɪnəʊ/', pos:'noun', vi:'núi lửa',
-   defEn:'(hot liquid rock and gases pour from a mountain) a mountain with an opening that lets out lava',
-   defVi:'núi lửa — ngọn núi có miệng phun ra dung nham và khí nóng.',
-   ex:'A volcano has erupted in Indonesia.',
-   exVi:'Một ngọn núi lửa đã phun trào ở Indonesia.',
-   colloc:'a volcano erupts; an active / dormant / extinct volcano; lava; volcanic ash',
-   note:'Plural: volcanoes.'},
-
-  {id:'famine', group:'A-natural', section:'A', word:'famine', ipa:'/ˈfæmɪn/', pos:'noun', vi:'nạn đói',
-   defEn:'(no food) a serious lack of food over a long period, affecting a whole region',
-   defVi:'nạn đói — tình trạng thiếu lương thực nghiêm trọng trong thời gian dài.',
-   ex:'Millions are starving as a result of the famine.',
-   exVi:'Hàng triệu người đang chết đói vì nạn đói này.',
-   colloc:'a severe famine; famine relief; millions are starving',
-   note:'Do not confuse famine (no food) with drought (no rain).'},
-
-  {id:'landslide', group:'A-natural', section:'A', word:'landslide', ipa:'/ˈlændslaɪd/', pos:'noun', vi:'sạt lở đất',
-   defEn:'(rocks and earth moving suddenly down a slope)',
-   defVi:'sạt lở đất — đất đá đột ngột trượt xuống theo sườn dốc.',
-   ex:'A landslide blocked the mountain road for three days.',
-   exVi:'Một vụ sạt lở đất đã chặn con đường trên núi suốt ba ngày.',
-   colloc:'a landslide blocks / buries; heavy rain causes landslides',
-   note:'The same word can also mean “a big election victory”, but in this unit it is about earth and rocks.'},
-
-  {id:'epidemic', group:'A-natural', section:'A', word:'epidemic', ipa:'/ˌepɪˈdemɪk/', pos:'noun', vi:'dịch bệnh',
-   defEn:'(disease affecting large numbers of people)',
-   defVi:'dịch bệnh — bệnh lây lan ảnh hưởng đến số đông người.',
-   ex:'The flu epidemic spread rapidly throughout the country.',
-   exVi:'Dịch cúm đã lan nhanh khắp cả nước.',
-   colloc:'a flu / cholera epidemic; an epidemic spreads; an epidemic breaks out',
-   note:'An epidemic that spreads across countries is called a pandemic.'},
-
-  {id:'hurricane', group:'A-natural', section:'A', word:'hurricane', ipa:'/ˈhʌrɪkən/', pos:'noun', vi:'bão cuồng phong (Đại Tây Dương)',
-   defEn:'(violent wind / storm) a very strong storm with violent winds',
-   defVi:'bão cuồng phong — bão rất mạnh, thường dùng cho vùng Đại Tây Dương và Mỹ.',
-   ex:'The hurricane destroyed hundreds of houses along the coast.',
-   exVi:'Cơn bão đã phá hủy hàng trăm ngôi nhà dọc bờ biển.',
-   colloc:'a hurricane hits / strikes; hurricane-force winds; a hurricane warning',
-   note:'Region matters: hurricane (Atlantic / USA), typhoon (western Pacific), cyclone (Indian Ocean).'},
-
-  {id:'tornado', group:'A-natural', section:'A', word:'tornado', ipa:'/tɔːˈneɪdəʊ/', pos:'noun', vi:'lốc xoáy',
-   defEn:'(violent wind / storm) a very strong, narrow column of wind that spins and moves over land',
-   defVi:'lốc xoáy — cột gió xoáy rất mạnh, hẹp, di chuyển trên đất liền.',
-   ex:'A tornado swept through the islands yesterday.',
-   exVi:'Một trận lốc xoáy đã quét qua các hòn đảo ngày hôm qua.',
-   colloc:'a tornado sweeps through; a tornado touches down; a tornado warning',
-   note:'Plural: tornadoes (or tornados).'},
-
-  {id:'typhoon', group:'A-natural', section:'A', word:'typhoon', ipa:'/taɪˈfuːn/', pos:'noun', vi:'bão nhiệt đới (Tây Thái Bình Dương)',
-   defEn:'(violent wind / storm) a tropical storm with very strong winds in the western Pacific',
-   defVi:'bão nhiệt đới — bão mạnh ở vùng tây Thái Bình Dương, ảnh hưởng Việt Nam, Philippines, Nhật…',
-   ex:'A typhoon hit the Philippines last week.',
-   exVi:'Một cơn bão đã đổ bộ vào Philippines tuần trước.',
-   colloc:'a typhoon hits; the typhoon season; typhoon damage'},
-
-  {id:'tropical-storm', group:'A-natural', section:'A', word:'tropical storm', ipa:'/ˈtrɒpɪkl stɔːm/', pos:'phrase', vi:'bão nhiệt đới',
-   defEn:'(violent wind / storm) a storm that forms over tropical seas, less strong than a typhoon',
-   defVi:'bão nhiệt đới — bão hình thành trên biển nhiệt đới, yếu hơn bão cuồng phong.',
-   ex:'The tropical storm brought heavy rain and strong winds.',
-   exVi:'Cơn bão nhiệt đới mang theo mưa lớn và gió mạnh.',
-   colloc:'a tropical storm warning; a tropical storm forms / strengthens'},
-
-  {id:'natural-disaster', group:'A-natural', section:'A', word:'natural disaster', ipa:'/ˈnætʃrəl dɪˈzɑːstə/', pos:'phrase', vi:'thiên tai',
-   defEn:'a disaster not caused by human beings',
-   defVi:'thiên tai — thảm họa không do con người gây ra.',
-   ex:'Floods and earthquakes are natural disasters; wars are not.',
-   exVi:'Lũ lụt và động đất là thiên tai; chiến tranh thì không.',
-   colloc:'a natural disaster strikes / hits; natural disaster relief',
-   note:'Opposite idea: a man-made disaster (e.g. a war, an explosion).'},
-
-  /* ---------- LESSON A : caused by people ---------- */
-  {id:'explosion', group:'A-human', section:'A', word:'explosion', ipa:'/ɪkˈspləʊʒn/', pos:'noun', vi:'vụ nổ',
-   defEn:'(e.g. a bomb) a sudden violent burst with a very loud noise',
-   defVi:'vụ nổ — tiếng nổ lớn, dữ dội, thường do bom.',
-   ex:'The explosion resulted in 300 casualties.',
-   exVi:'Vụ nổ đã gây ra 300 thương vong.',
-   colloc:'a bomb explosion; a huge explosion; the explosion resulted in…',
-   note:'Verb: explode /ɪkˈspləʊd/ — “The bomb exploded.”'},
-
-  {id:'major-accident', group:'A-human', section:'A', word:'major accident', ipa:'/ˈmeɪdʒə ˈæksɪdənt/', pos:'phrase', vi:'tai nạn nghiêm trọng',
-   defEn:'(e.g. a plane crash) a very serious accident',
-   defVi:'tai nạn nghiêm trọng — ví dụ tai nạn máy bay.',
-   ex:'The train crash was a major accident — over fifty people were injured.',
-   exVi:'Vụ tai nạn tàu hỏa là một tai nạn nghiêm trọng — hơn năm mươi người bị thương.',
-   colloc:'a major accident happens / occurs; be involved in a major accident'},
-
-  {id:'incident', group:'A-human', section:'A', word:'incident', ipa:'/ˈɪnsɪdənt/', pos:'noun', vi:'sự cố, vụ việc',
-   defEn:'an event, often unpleasant or unusual',
-   defVi:'sự cố, vụ việc — thường là chuyện không vui hoặc bất thường.',
-   ex:'The police are investigating the incident at the airport.',
-   exVi:'Cảnh sát đang điều tra vụ việc ở sân bay.',
-   colloc:'a serious / minor incident; a border incident; the incident happened / occurred',
-   note:'An incident is usually smaller than an accident, and the word is often used when people do not want to call something a disaster.'},
-
-  {id:'plane-crash', group:'A-human', section:'A', word:'plane crash', ipa:'/pleɪn kræʃ/', pos:'phrase', vi:'vụ tai nạn máy bay',
-   defEn:'an accident in which an aircraft hits the ground and is badly damaged',
-   defVi:'tai nạn máy bay — máy bay lao xuống đất và bị phá hủy.',
-   ex:'All the passengers survived the plane crash.',
-   exVi:'Tất cả hành khách đều sống sót sau vụ tai nạn máy bay.',
-   colloc:'a plane crashes; a plane crash kills / kills nobody; be killed in a plane crash'},
-
-  {id:'war', group:'A-human', section:'A', word:'war', ipa:'/wɔː/', pos:'noun', vi:'chiến tranh',
-   defEn:'fighting between countries or groups, using weapons',
-   defVi:'chiến tranh — giao tranh vũ trang giữa các quốc gia hoặc nhóm.',
-   ex:'Thousands of refugees have crossed the border because of the war.',
-   exVi:'Hàng nghìn người tị nạn đã vượt biên giới vì chiến tranh.',
-   colloc:'go to war; a war breaks out / ends; prisoners of war; war damage'},
-
-  {id:'civil-war', group:'A-human', section:'A', word:'civil war', ipa:'/ˈsɪvl wɔː/', pos:'phrase', vi:'nội chiến',
-   defEn:'war between people of the same country',
-   defVi:'nội chiến — chiến tranh giữa những người trong cùng một quốc gia.',
-   ex:'Civil war has broken out in the north of the country.',
-   exVi:'Nội chiến đã bùng nổ ở miền bắc đất nước.',
-   colloc:'a civil war breaks out / ends; be divided by civil war'},
-
-  /* ---------- LESSON A : verbs ---------- */
-  {id:'erupt', group:'A-verbs', section:'A', word:'erupt', ipa:'/ɪˈrʌpt/', pos:'verb', vi:'phun trào',
-   defEn:'used about a volcano: to send out hot rock and gases',
-   defVi:'phun trào — dùng cho núi lửa.',
-   ex:'A volcano has erupted in Indonesia.',
-   exVi:'Một ngọn núi lửa đã phun trào ở Indonesia.',
-   colloc:'a volcano erupts; violence erupts; an eruption',
-   note:'Also used figuratively: “Violence erupted in the streets.”'},
-
-  {id:'injure', group:'A-verbs', section:'A', word:'injure', ipa:'/ˈɪndʒə/', pos:'verb', vi:'làm bị thương',
-   defEn:'to hurt a person or an animal (used about people)',
-   defVi:'làm bị thương — dùng cho người (và động vật).',
-   ex:'200 people were injured.',
-   exVi:'200 người bị thương.',
-   colloc:'be seriously / badly injured; the injured; an injury',
-   note:'Do not use injure for buildings. For things use damage.'},
-
-  {id:'damage', group:'A-verbs', section:'A', word:'damage', ipa:'/ˈdæmɪdʒ/', pos:'verb', vi:'làm hư hại',
-   defEn:'to harm a thing or property (used about things)',
-   defVi:'làm hư hại — dùng cho đồ vật, công trình.',
-   ex:'Many buildings were damaged.',
-   exVi:'Nhiều tòa nhà bị hư hại.',
-   colloc:'be badly / severely damaged; damage to something; storm damage',
-   note:'Damage can also be a noun: “The storm caused a lot of damage.”'},
-
-  {id:'starve', group:'A-verbs', section:'A', word:'starve', ipa:'/stɑːv/', pos:'verb', vi:'chết đói, chịu đói',
-   defEn:'to suffer or die because there is not enough food',
-   defVi:'chết đói — chịu đựng hoặc chết vì thiếu ăn.',
-   ex:'Millions are starving as a result of the famine.',
-   exVi:'Hàng triệu người đang chết đói vì nạn đói.',
-   colloc:'be starving; starve to death; starvation',
-   note:'In informal English “I’m starving!” simply means “I’m very hungry.”'},
-
-  {id:'suffer', group:'A-verbs', section:'A', word:'suffer', ipa:'/ˈsʌfə/', pos:'verb', vi:'chịu đựng, trải qua',
-   defEn:'to experience something bad, such as pain or damage',
-   defVi:'chịu đựng — trải qua điều tồi tệ.',
-   ex:'The area is suffering its worst drought for many years.',
-   exVi:'Khu vực này đang trải qua đợt hạn hán tồi tệ nhất trong nhiều năm.',
-   colloc:'suffer from something; suffer damage / injuries / losses',
-   note:'Notice: suffer + a drought (no “from”), but suffer FROM an illness.'},
-
-  {id:'break-out', group:'A-verbs', section:'A', word:'break out', ipa:'/breɪk ˈaʊt/', pos:'verb', vi:'bùng nổ',
-   defEn:'used about war, fighting, disease or fire: to start suddenly',
-   defVi:'bùng nổ — dùng cho chiến tranh, bệnh dịch, hỏa hoạn: bắt đầu đột ngột.',
-   ex:'Civil war has broken out in the north of the country.',
-   exVi:'Nội chiến đã bùng nổ ở miền bắc đất nước.',
-   colloc:'a war / fire / epidemic breaks out; fighting breaks out',
-   note:'break out – broke out – broken out. No object: ✗ “They broke out a war.”'},
-
-  {id:'sweep-through', group:'A-verbs', section:'A', word:'sweep through', ipa:'/swiːp θruː/', pos:'verb', vi:'quét qua',
-   defEn:'to move quickly and with force through a place',
-   defVi:'quét qua — di chuyển nhanh và mạnh qua một khu vực.',
-   ex:'A tornado swept through the islands yesterday.',
-   exVi:'Một trận lốc xoáy đã quét qua các hòn đảo ngày hôm qua.',
-   colloc:'a storm / tornado / fire sweeps through',
-   note:'sweep – swept – swept.'},
-
-  {id:'spread', group:'A-verbs', section:'A', word:'spread', ipa:'/spred/', pos:'verb', vi:'lan rộng',
-   defEn:'to move and reach more places or more people',
-   defVi:'lan rộng — lan sang nhiều nơi, nhiều người hơn.',
-   ex:'The flu epidemic spread rapidly throughout the country.',
-   exVi:'Dịch cúm lan nhanh khắp cả nước.',
-   colloc:'spread rapidly / quickly; spread through / across; the spread of a disease',
-   note:'spread – spread – spread (the past form does not change).'},
-
-  {id:'shake', group:'A-verbs', section:'A', word:'shake', ipa:'/ʃeɪk/', pos:'verb', vi:'làm rung chuyển',
-   defEn:'to move suddenly and violently from side to side',
-   defVi:'làm rung chuyển — chuyển động mạnh đột ngột.',
-   ex:'A big earthquake shook the city at noon today.',
-   exVi:'Một trận động đất lớn đã làm rung chuyển thành phố vào trưa hôm nay.',
-   colloc:'the ground shakes; shake with fear / cold',
-   note:'shake – shook – shaken.'},
-
-  {id:'feared-dead', group:'A-verbs', section:'A', word:'be feared dead', ipa:'/bi fɪəd ded/', pos:'phrase', vi:'được cho là đã chết',
-   defEn:'used in news reports: people think, but do not yet know for sure, that these people are dead',
-   defVi:'được cho là đã chết — dùng trong tin tức khi chưa xác nhận chắc chắn.',
-   ex:'Hundreds are feared dead.',
-   exVi:'Hàng trăm người được cho là đã thiệt mạng.',
-   colloc:'be feared dead / injured; be reported dead',
-   note:'Compare: “be reported dead” = the news says so; “be feared dead” = people are afraid it is true.'},
-
-  /* ---------- LESSON B ---------- */
-  {id:'casualty', group:'B-people', section:'B', word:'casualty', ipa:'/ˈkæʒuəlti/', pos:'noun', vi:'người thương vong',
-   defEn:'dead and injured people (in an accident or a war)',
-   defVi:'thương vong — người chết và người bị thương trong tai nạn hoặc chiến tranh.',
-   ex:'The explosion resulted in 300 casualties.',
-   exVi:'Vụ nổ đã gây ra 300 thương vong.',
-   colloc:'a casualty figure; heavy casualties; the casualty list',
-   note:'One word covers both the dead and the injured.'},
-
-  {id:'victim', group:'B-people', section:'B', word:'victim', ipa:'/ˈvɪktɪm/', pos:'noun', vi:'nạn nhân',
-   defEn:'those who suffer the results of something bad',
-   defVi:'nạn nhân — người phải chịu hậu quả của điều tồi tệ.',
-   ex:'The real victims of civil war are children left without parents.',
-   exVi:'Nạn nhân thực sự của nội chiến là những đứa trẻ mất cha mẹ.',
-   colloc:'a victim of something; flood victims; fall victim to',
-   note:'A victim is not necessarily injured — a victim can lose a home or a family.'},
-
-  {id:'survivor', group:'B-people', section:'B', word:'survivor', ipa:'/səˈvaɪvə/', pos:'noun', vi:'người sống sót',
-   defEn:'people who live through a disaster',
-   defVi:'người sống sót — người sống qua một thảm họa.',
-   ex:'There were only three survivors. All the other passengers were reported dead.',
-   exVi:'Chỉ có ba người sống sót. Tất cả hành khách còn lại được cho là đã thiệt mạng.',
-   colloc:'the sole survivor; survivors are rescued; survive a crash',
-   note:'Verb: survive; noun (thing): survival.'},
-
-  {id:'refugee', group:'B-people', section:'B', word:'refugee', ipa:'/ˌrefjuˈdʒiː/', pos:'noun', vi:'người tị nạn',
-   defEn:'people who have escaped from their own country because of a war or another disaster',
-   defVi:'người tị nạn — người rời bỏ nước mình vì chiến tranh hoặc thảm họa.',
-   ex:'Thousands of refugees have crossed the border looking for food and shelter.',
-   exVi:'Hàng nghìn người tị nạn đã vượt biên giới tìm thức ăn và nơi trú ẩn.',
-   colloc:'a refugee camp; refugees flee / cross the border; seek refuge',
-   note:'Stress is on the last syllable: ref-u-GEE /ˌrefjuˈdʒiː/.'},
-
-  {id:'migrant', group:'B-people', section:'B', word:'migrant', ipa:'/ˈmaɪɡrənt/', pos:'noun', vi:'người di cư',
-   defEn:'people who travel from one country to another, often in order to find work',
-   defVi:'người di cư — người chuyển từ nước này sang nước khác, thường để tìm việc.',
-   ex:'Millions of migrants enter the country each year, looking for a better life.',
-   exVi:'Hàng triệu người di cư vào nước này mỗi năm, tìm kiếm cuộc sống tốt hơn.',
-   colloc:'economic migrants; migrant workers; migrate; migration',
-   note:'Not all migrants are refugees: a migrant may move to find work, not to escape danger.'},
-
-  {id:'the-dead', group:'B-people', section:'B', word:'the dead', ipa:'/ðə ded/', pos:'phrase', vi:'những người đã chết',
-   defEn:'the people who have died (used as a plural noun)',
-   defVi:'những người đã chết — dùng như danh từ số nhiều.',
-   ex:'During the battle, the dead and wounded were flown out in helicopters.',
-   exVi:'Trong trận chiến, những người chết và bị thương được chở ra bằng trực thăng.',
-   colloc:'the dead and the wounded; bury the dead; the death toll',
-   note:'Always with “the”: ✗ “Two deads” → ✓ “Two dead”.'},
-
-  {id:'the-wounded', group:'B-people', section:'B', word:'the wounded', ipa:'/ðə ˈwuːndɪd/', pos:'phrase', vi:'những người bị thương',
-   defEn:'the people who are injured in a battle or by a weapon',
-   defVi:'những người bị thương — bị thương trong trận chiến hoặc do vũ khí.',
-   ex:'The dead and wounded were flown out in helicopters.',
-   exVi:'Những người chết và bị thương được chở ra bằng trực thăng.',
-   colloc:'the dead and wounded; be badly wounded; a wound',
-   note:'wound /wuːnd/ = an injury caused by a weapon; wound (verb) /wuːnd/ = to injure with a weapon.'},
-
-  /* ---------- LESSON C ---------- */
-  {id:'rabies', group:'C-diseases', section:'C', word:'rabies', ipa:'/ˈreɪbiːz/', pos:'noun', vi:'bệnh dại',
-   defEn:'a disease that can be caused by the bite of an infected dog, fox, etc.; very serious',
-   defVi:'bệnh dại — bệnh rất nguy hiểm, có thể lây qua vết cắn của chó, cáo… bị nhiễm bệnh.',
-   ex:'Rabies out of control in many parts of Asia.',
-   exVi:'Bệnh dại đang mất kiểm soát ở nhiều nơi tại châu Á.',
-   colloc:'rabies spreads; a rabies vaccination; be infected with rabies',
-   note:'The word ends in -s but is uncountable: ✗ “a rabies” → ✓ “rabies”.'},
-
-  {id:'aids', group:'C-diseases', section:'C', word:'AIDS', ipa:'/eɪdz/', pos:'noun', vi:'bệnh AIDS',
-   defEn:'acquired immune deficiency syndrome; often caused by sexual contact or contact with contaminated blood',
-   defVi:'AIDS (hội chứng suy giảm miễn dịch mắc phải) — thường lây qua quan hệ tình dục hoặc tiếp xúc với máu bị nhiễm.',
-   ex:'New AIDS unit to be opened this month.',
-   exVi:'Một khoa AIDS mới sẽ được mở trong tháng này.',
-   colloc:'an AIDS patient; an AIDS unit; the AIDS epidemic',
-   note:'AIDS is the illness; HIV is the virus that causes it.'},
-
-  {id:'hiv', group:'C-diseases', section:'C', word:'HIV', ipa:'/ˌeɪtʃ aɪ ˈviː/', pos:'noun', vi:'vi-rút HIV',
-   defEn:'the virus that damages the immune system and can lead to AIDS',
-   defVi:'HIV — vi-rút làm tổn thương hệ miễn dịch và có thể dẫn đến AIDS.',
-   ex:'HIV attacks the immune system.',
-   exVi:'HIV tấn công hệ miễn dịch.',
-   colloc:'be HIV-positive; HIV testing; HIV prevention',
-   note:'HIV is the virus; AIDS is the illness. A person can have HIV for years without having AIDS.'},
-
-  {id:'malaria', group:'C-diseases', section:'C', word:'malaria', ipa:'/məˈleəriə/', pos:'noun', vi:'bệnh sốt rét',
-   defEn:'a disease usually caught because of mosquito bites',
-   defVi:'sốt rét — bệnh thường lây do muỗi đốt.',
-   ex:'New malaria drug tested.',
-   exVi:'Thuốc chống sốt rét mới đã được thử nghiệm.',
-   colloc:'catch malaria; a malaria drug; a malaria outbreak',
-   note:'Malaria is transmitted by infected mosquitoes, not from person to person by touch.'},
-
-  {id:'cholera', group:'C-diseases', section:'C', word:'cholera', ipa:'/ˈkɒlərə/', pos:'noun', vi:'bệnh tả',
-   defEn:'a disease causing sickness and diarrhoea, often caused by infected food and water',
-   defVi:'bệnh tả — gây nôn mửa và tiêu chảy, thường do thức ăn và nước bị nhiễm.',
-   ex:'Cholera and typhoid injections not needed, says Tourism Minister.',
-   exVi:'Bộ trưởng Du lịch nói không cần tiêm phòng tả và thương hàn.',
-   colloc:'a cholera outbreak; catch cholera; a cholera injection',
-   note:'Uncountable: ✗ “a cholera” → ✓ “cholera”.'},
-
-  {id:'typhoid', group:'C-diseases', section:'C', word:'typhoid', ipa:'/ˈtaɪfɔɪd/', pos:'noun', vi:'bệnh thương hàn',
-   defEn:'a disease causing sickness and diarrhoea, often caused by infected food and water',
-   defVi:'bệnh thương hàn — gây nôn mửa và tiêu chảy, thường do thức ăn và nước bị nhiễm.',
-   ex:'Cholera and typhoid injections not needed, says Tourism Minister.',
-   exVi:'Bộ trưởng Du lịch nói không cần tiêm phòng tả và thương hàn.',
-   colloc:'a typhoid outbreak; a typhoid injection',
-   note:'Do not confuse typhoid with typhoon (a storm)!'},
-
-  {id:'disease', group:'C-diseases', section:'C', word:'disease', ipa:'/dɪˈziːz/', pos:'noun', vi:'bệnh',
-   defEn:'an illness of the body',
-   defVi:'bệnh — tình trạng ốm của cơ thể.',
-   ex:'Rabies is a very serious disease.',
-   exVi:'Bệnh dại là một căn bệnh rất nghiêm trọng.',
-   colloc:'a serious / infectious disease; catch a disease; a disease spreads',
-   note:'Note the spelling: dis-ease, one “s”, two “e” at the end.'},
-
-  {id:'immune-system', group:'C-words', section:'C', word:'immune system', ipa:'/ɪˈmjuːn ˌsɪstəm/', pos:'phrase', vi:'hệ miễn dịch',
-   defEn:'the system in your body that fights infection',
-   defVi:'hệ miễn dịch — hệ thống trong cơ thể chống lại nhiễm bệnh.',
-   ex:'HIV attacks the immune system.',
-   exVi:'HIV tấn công hệ miễn dịch.',
-   colloc:'a weak / strong immune system; the immune system fights infection'},
-
-  {id:'mosquito-bite', group:'C-words', section:'C', word:'mosquito bite', ipa:'/məˈskiːtəʊ baɪt/', pos:'phrase', vi:'vết muỗi đốt',
-   defEn:'a small injury made when a mosquito takes blood from you',
-   defVi:'vết muỗi đốt — vết nhỏ do muỗi hút máu.',
-   ex:'Malaria is usually caught because of mosquito bites.',
-   exVi:'Sốt rét thường lây do muỗi đốt.',
-   colloc:'be bitten by a mosquito; prevent mosquito bites',
-   note:'Plural of mosquito: mosquitoes.'},
-
-  {id:'contaminated', group:'C-words', section:'C', word:'contaminated food and water', ipa:'/kənˈtæmɪneɪtɪd/', pos:'phrase', vi:'thức ăn và nước bị ô nhiễm',
-   defEn:'food and water that carry bacteria or poison and are not safe to eat or drink',
-   defVi:'thức ăn và nước bị ô nhiễm — mang vi khuẩn hoặc chất độc, không an toàn.',
-   ex:'Cholera can spread through contaminated food and water.',
-   exVi:'Bệnh tả có thể lây qua thức ăn và nước bị ô nhiễm.',
-   colloc:'contaminated water; contaminate something; contamination',
-   note:'Verb: contaminate /kənˈtæmɪneɪt/.'},
-
-  {id:'drug', group:'C-words', section:'C', word:'drug', ipa:'/drʌɡ/', pos:'noun', vi:'thuốc',
-   defEn:'a medicine, or a substance that changes how your body or mind works',
-   defVi:'thuốc — hoặc chất làm thay đổi cơ thể/tinh thần.',
-   ex:'New malaria drug tested.',
-   exVi:'Một loại thuốc chống sốt rét mới đã được thử nghiệm.',
-   colloc:'a new drug; test a drug; drug treatment; take drugs',
-   note:'Context decides the meaning: “a malaria drug” = medicine; “drug abuse” = illegal drugs.'},
-
-  {id:'injection', group:'C-words', section:'C', word:'injection', ipa:'/ɪnˈdʒekʃn/', pos:'noun', vi:'mũi tiêm',
-   defEn:'the act of putting a drug into the body with a needle',
-   defVi:'mũi tiêm — đưa thuốc vào cơ thể bằng kim tiêm.',
-   ex:'Cholera and typhoid injections not needed, says Tourism Minister.',
-   exVi:'Bộ trưởng Du lịch nói không cần tiêm phòng tả và thương hàn.',
-   colloc:'have an injection; give somebody an injection; inject somebody with something',
-   note:'In British English you “have an injection”; in American English you often “get a shot”.'}
+  /* ---------- D. Diseases and epidemics ---------- */
+  {w:'disease', p:'n', ipa:'/dɪˈziːz/', vi:'bệnh tật', ex:'The disease affects many people.', c:'disease'},
+  {w:'rabies', p:'n', ipa:'/ˈreɪbiːz/', vi:'bệnh dại', ex:'Rabies can be transmitted by an infected animal bite.', c:'disease'},
+  {w:'AIDS', p:'n', ipa:'/eɪdz/', vi:'hội chứng suy giảm miễn dịch mắc phải', ex:'AIDS affects the immune system.', c:'disease'},
+  {w:'HIV', p:'n', ipa:'/ˌeɪtʃ aɪ ˈviː/', vi:'vi-rút gây suy giảm miễn dịch ở người', ex:'HIV attacks the immune system.', c:'disease'},
+  {w:'malaria', p:'n', ipa:'/məˈleəriə/', vi:'bệnh sốt rét', ex:'Malaria is transmitted by infected mosquitoes.', c:'disease'},
+  {w:'cholera', p:'n', ipa:'/ˈkɒlərə/', vi:'bệnh tả', ex:'Cholera can spread through contaminated water.', c:'disease'},
+  {w:'typhoid', p:'n', ipa:'/ˈtaɪfɔɪd/', vi:'bệnh thương hàn', ex:'Typhoid can spread through contaminated food and water.', c:'disease'},
+  {w:'virus', p:'n', ipa:'/ˈvaɪrəs/', vi:'vi-rút', ex:'Some diseases are caused by viruses.', c:'disease'},
+  {w:'immune system', p:'n phr', ipa:'/ɪˈmjuːn ˌsɪstəm/', vi:'hệ miễn dịch', ex:'HIV attacks the immune system.', c:'disease'},
+  {w:'mosquito bite', p:'n phr', ipa:'/məˈskiːtəʊ baɪt/', vi:'vết muỗi đốt', ex:'Malaria can be transmitted through an infected mosquito bite.', c:'disease'},
+  {w:'contaminated', p:'adj', ipa:'/kənˈtæmɪneɪtɪd/', vi:'bị nhiễm bẩn hoặc mầm bệnh', ex:'The disease spread through contaminated water.', c:'disease'},
+  {w:'drug', p:'n', ipa:'/drʌɡ/', vi:'thuốc', ex:'A new malaria drug is being tested.', c:'disease'},
+  {w:'injection', p:'n', ipa:'/ɪnˈdʒekʃən/', vi:'mũi tiêm, việc tiêm', ex:'The patient received an injection.', c:'disease'},
+  {w:'diarrhoea', p:'n', ipa:'/ˌdaɪəˈrɪə/', vi:'bệnh tiêu chảy', ex:'Cholera can cause severe diarrhoea.', c:'disease'},
+  {w:'infect', p:'v', ipa:'/ɪnˈfekt/', vi:'lây nhiễm', ex:'The virus can infect human cells.', c:'disease'},
+  {w:'infected', p:'adj', ipa:'/ɪnˈfektɪd/', vi:'bị nhiễm bệnh', ex:'Infected water can spread disease.', c:'disease'}
 ];
 
 /* =========================================================
-   3. QUIZ BANKS
+   2. TRẠNG THÁI
    ========================================================= */
-const QUIZZES = {
-  miniA:[
-    {q:'Which word means “a long period with no rain”?',
-     options:['flood','drought','famine','landslide'], answer:1,
-     exp:'Drought = no rain. Famine = no food. Flood = too much water.'},
-    {q:'200 people were ______ and many buildings were ______.',
-     options:['injured / damaged','damaged / injured','injured / injured','damaged / damaged'], answer:0,
-     exp:'Injure is used about people; damage is used about things.'},
-    {q:'A volcano has ______ in Indonesia.',
-     options:['erupted','exploded','broken out','swept through'], answer:0,
-     exp:'Volcanoes erupt. Wars and epidemics break out; storms sweep through.'},
-    {q:'Civil war has ______ in the north of the country.',
-     options:['broken out','erupted','swept through','spread'], answer:0,
-     exp:'Break out is used about war, fighting, fire and disease: it starts suddenly.'}
-  ],
-  pracA:[
-    {q:'“The flu epidemic ______ rapidly throughout the country.”',
-     options:['spread','spreaded','spreads out','swept'], answer:0,
-     exp:'Spread – spread – spread. The past form does not change.'},
-    {q:'“Millions are ______ as a result of the famine.”',
-     options:['starving','suffering','injuring','damaging'], answer:0,
-     exp:'Starve = to suffer or die because there is not enough food.'},
-    {q:'“The area is ______ its worst drought for many years.”',
-     options:['suffering','injuring','erupting','breaking out'], answer:0,
-     exp:'Suffer + a drought (no “from”): suffer its worst drought.'},
-    {q:'Which sentence is correct?',
-     options:['Many buildings were injured.','Many buildings were damaged.','Many buildings were wounded.','Many buildings were harmed people.'], answer:1,
-     exp:'Buildings are damaged, not injured. People are injured or wounded.'}
-  ],
-  miniB:[
-    {q:'“The explosion resulted in 300 ______.”',
-     options:['casualties','victims','survivors','refugees'], answer:0,
-     exp:'Casualties = dead and injured people together. The textbook answer is casualties.'},
-    {q:'“Thousands of ______ have crossed the border looking for food and shelter.”',
-     options:['refugees','migrants','survivors','casualties'], answer:0,
-     exp:'Refugees have escaped their own country because of war or another disaster.'},
-    {q:'“The real ______ of civil war are children left without parents.”',
-     options:['victims','casualties','refugees','migrants'], answer:0,
-     exp:'Victims = those who suffer the results. Here it is the textbook answer.'},
-    {q:'Which sentence is grammatically correct?',
-     options:['The wounded was taken to hospital.','The wounded were taken to hospital.','A wounded were taken to hospital.','The woundeds were taken to hospital.'], answer:1,
-     exp:'“The wounded” and “the dead” are plural: they take a plural verb.'}
-  ],
-  pracB:[
-    {q:'A person who travels to another country mainly to find work is a ______.',
-     options:['migrant','survivor','casualty','the dead'], answer:0,
-     exp:'Migrant = someone who moves to another country, often for work.'},
-    {q:'Someone who lives through a plane crash when others die is a ______.',
-     options:['survivor','victim','refugee','migrant'], answer:0,
-     exp:'Survivor = a person who lives through a disaster.'},
-    {q:'“During the battle, the dead and ______ were flown out in helicopters.”',
-     options:['wounded','injured people','damaged','casualties people'], answer:0,
-     exp:'The fixed phrase in the textbook is “the dead and wounded”.'},
-    {q:'Which word can describe someone who lost their home but was not physically hurt?',
-     options:['victim','casualty','wounded','survivor only'], answer:0,
-     exp:'A victim suffers the results — this includes losing a home or a family.'}
-  ],
-  miniC:[
-    {q:'Which disease is spread by mosquito bites?',
-     options:['malaria','rabies','cholera','AIDS'], answer:0,
-     exp:'Malaria is usually caught because of mosquito bites.'},
-    {q:'“HIV” and “AIDS” mean exactly the same thing.',
-     options:['True','False'], answer:1,
-     exp:'False. HIV is the virus; AIDS is the illness that can develop later.'},
-    {q:'Cholera and typhoid are often spread through ______.',
-     options:['contaminated food and water','mosquito bites','animal saliva','the air in airplanes'], answer:0,
-     exp:'They are often caused by infected (contaminated) food and water.'},
-    {q:'Which disease can be transmitted through the bite or saliva of an infected animal?',
-     options:['rabies','malaria','typhoid','AIDS'], answer:0,
-     exp:'Rabies can be caused by the bite of an infected dog, fox, etc.'}
-  ],
-  pracC:[
-    {q:'“New malaria drug ______.” (headline)',
-     options:['tested','tests','is testing','test'], answer:0,
-     exp:'Headlines drop auxiliary verbs: “A new malaria drug has been tested.”'},
-    {q:'Which word means “a disease affecting large numbers of people”?',
-     options:['epidemic','injection','immune system','disease'], answer:0,
-     exp:'Epidemic = a disease affecting large numbers of people.'},
-    {q:'An injection is ______.',
-     options:['a way of putting a drug into the body with a needle','a kind of mosquito','a hospital building','a newspaper headline'], answer:0,
-     exp:'Injection = putting a drug into the body with a needle.'},
-    {q:'HIV damages ______.',
-     options:['the immune system','the legs only','the newspaper','the water supply'], answer:0,
-     exp:'HIV attacks and damages the immune system.'}
-  ],
-  mixed:[
-    {q:'A tornado ______ the islands yesterday.',
-     options:['swept through','broke out','erupted','spread'], answer:0,
-     exp:'Sweep through = move quickly and with force through a place.'},
-    {q:'Which is a disaster caused by people, not a natural disaster?',
-     options:['civil war','drought','earthquake','typhoon'], answer:0,
-     exp:'War is caused by people; the others are natural disasters.'},
-    {q:'“Hundreds are ______ dead.”',
-     options:['feared','afraid','frightened','scared'], answer:0,
-     exp:'The fixed news phrase is “be feared dead”.'},
-    {q:'Which word is used about things, not people?',
-     options:['damaged','injured','wounded','casualties'], answer:0,
-     exp:'Damage is used about things and property.'},
-    {q:'A person who has escaped their country because of a war is a ______.',
-     options:['refugee','migrant','casualty','survivor'], answer:0,
-     exp:'Refugee = escaped their own country because of war or another disaster.'},
-    {q:'Which disease is caused by a virus that destroys the body’s immune system?',
-     options:['AIDS','rabies','cholera','malaria'], answer:0,
-     exp:'AIDS (caused by HIV) destroys the immune system.'}
-  ]
-};
+let list = DATA.slice();
+let idx = 0;
+let flipped = false;
+let accent = 'en-US';
 
 /* =========================================================
-   4. TEXTBOOK EXERCISES
+   3. TEXT-TO-SPEECH
    ========================================================= */
-function qText(i){
-  return '<div class="q" data-q="'+i+'"><input class="qinput" type="text" autocomplete="off" spellcheck="false"><div class="fb" hidden></div></div>';
+const synth = window.speechSynthesis;
+let voices = [];
+
+function loadVoices(){
+  if (!synth) return;
+  voices = synth.getVoices() || [];
+  updateVoiceNote();
+}
+if (synth){
+  loadVoices();
+  synth.onvoiceschanged = loadVoices;
+  setTimeout(loadVoices, 400); // vài trình duyệt nạp voices chậm
 }
 
-const EX = [
-  {
-    id:'13.1',
-    title:'Exercise 13.1 — What type of disaster?',
-    intro:'What type of disaster from Part A are these sentences about? Choose the best answer. The first one is done for you.',
-    example:'<b>1.</b> “The lava flow destroyed three villages.” → <b>Volcano</b> — lava is the hot liquid rock from the mountain.',
-    questions:[
-      {type:'mcq', q:'The aftershock struck at 3.35 pm local time.',
-       options:['earthquake','explosion','war','flood'], answer:0,
-       exp:'Earthquake — an aftershock is a smaller earthquake that comes after a big one, so the word aftershock is the clue.'},
-      {type:'mcq', q:'People had boarded up shops and houses during the day before, and stayed indoors.',
-       options:['hurricane / typhoon / tropical storm','earthquake','famine','landslide'], answer:0,
-       exp:'Violent wind or storm. Boarding up windows and staying indoors are what people do before a storm. The textbook accepts hurricane, typhoon or tropical storm (and tornado); the choice depends on the part of the world.'},
-      {type:'mcq', q:'Gunfire could be heard all over the town.',
-       options:['war / civil war','explosion','epidemic','drought'], answer:0,
-       exp:'War or civil war — gunfire means people are shooting. If the fighting is between people of the same country, it is a civil war.'},
-      {type:'mcq', q:'Witnesses said they saw a fireball fall out of the sky.',
-       options:['plane crash','drought','flood','famine'], answer:0,
-       exp:'A plane crash (a major accident) — the “fireball” is the burning aircraft. Some teachers also accept explosion, because a bomb can also make a fireball, but the usual textbook answer is plane crash.'},
-      {type:'mcq', q:'People had to stay on the upper floors and sometimes on the roofs of their homes.',
-       options:['flood','earthquake','tornado','famine'], answer:0,
-       exp:'Flood — the water came into the houses, so people went up to the upper floors and then onto the roofs.'},
-      {type:'mcq', q:'The earth is cracked and vegetation has dried up.',
-       options:['drought','landslide','volcano','epidemic'], answer:0,
-       exp:'Drought — there is no rain, so the ground cracks and the plants dry up.'},
-      {type:'mcq', q:'They quite often happen in this area of the mountains and it can take some time for the roads to be cleared, especially if trees have been brought down too.',
-       options:['landslide','flood','hurricane','war'], answer:0,
-       exp:'Landslide — rocks and earth move down the mountain and block the roads; trees come down with them.'}
-    ]
-  },
-  {
-    id:'13.2',
-    title:'Exercise 13.2 — Word-class table',
-    intro:'Complete the missing items in this word-class table. Where the space is shaded, you do not need to write anything.',
-    custom:
-      '<table class="wtable">'+
-      '<thead><tr><th>verb</th><th>noun: thing or idea</th><th>noun: person</th></tr></thead>'+
-      '<tbody>'+
-        '<tr><td><span class="given">explode</span></td><td><span class="given">explosion</span></td><td class="shaded">—</td></tr>'+
-        '<tr><td>'+qText(0)+'</td><td>'+qText(1)+'</td><td><span class="given">survivor</span></td></tr>'+
-        '<tr><td><span class="given">injure</span></td><td>'+qText(2)+'</td><td class="shaded">—</td></tr>'+
-        '<tr><td><span class="given">starve</span></td><td>'+qText(3)+'</td><td class="shaded">—</td></tr>'+
-        '<tr><td><span class="given">erupt</span></td><td>'+qText(4)+'</td><td class="shaded">—</td></tr>'+
-      '</tbody></table>',
-    questions:[
-      {type:'text', q:'verb for the person noun “survivor”', accept:['survive'],
-       exp:'survive — “Three passengers survived the crash.”'},
-      {type:'text', q:'noun (thing or idea) for the verb “survive”', accept:['survival'],
-       exp:'survival — “The survival of the passengers was a miracle.”'},
-      {type:'text', q:'noun (thing or idea) for the verb “injure”', accept:['injury','injuries'],
-       exp:'injury — “He suffered a serious injury.”'},
-      {type:'text', q:'noun (thing or idea) for the verb “starve”', accept:['starvation'],
-       exp:'starvation — “Millions of people face starvation.”'},
-      {type:'text', q:'noun (thing or idea) for the verb “erupt”', accept:['eruption'],
-       exp:'eruption — “The eruption destroyed three villages.”'}
-    ]
-  },
-  {
-    id:'13.3',
-    title:'Exercise 13.3 — Reading the headlines',
-    intro:'In these headlines, say whether the situation seems to be getting worse, getting better, or whether a disaster has happened or has been avoided / prevented.',
-    example:'<b>1.</b> “Poison gas cloud spreads” → <b>getting worse</b> — the cloud is spreading, so the danger is increasing.',
-    questions:[
-      {type:'mcq', q:'POLICE DEFUSE TERRORIST BOMB',
-       options:['getting worse','getting better','a disaster has happened','a disaster was avoided / prevented'], answer:3,
-       exp:'Avoided. “Defuse” means the police made the bomb safe, so the explosion did not happen.'},
-      {type:'mcq', q:'OIL SLICK RECEDES',
-       options:['getting worse','getting better','a disaster has happened','a disaster was avoided / prevented'], answer:1,
-       exp:'Getting better. “Recede” means it is going away / getting smaller.'},
-      {type:'mcq', q:'Experts warn of cholera time bomb',
-       options:['getting worse','getting better','a disaster has happened','a disaster was avoided / prevented'], answer:0,
-       exp:'Getting worse. “Warn of a time bomb” means a serious problem is developing. Some teachers also accept “a disaster avoided”, but the warning suggests the danger is growing.'},
-      {type:'mcq', q:"All survive plane's emergency landing",
-       options:['getting worse','getting better','a disaster has happened','a disaster was avoided / prevented'], answer:3,
-       exp:'Avoided. Everyone survived, so the disaster was prevented.'},
-      {type:'mcq', q:'Flood warnings not heeded in time',
-       options:['getting worse','getting better','a disaster has happened','a disaster was avoided / prevented'], answer:2,
-       exp:'A disaster has happened. “Not heeded” = people did not listen to the warnings, so the flood caught them.'}
-    ]
-  },
-  {
-    id:'13.4',
-    title:'Exercise 13.4 — Fill the gaps',
-    intro:'Fill the gaps with a suitable word from Part B. Try to work from memory. The first one is done for you.',
-    example:'<b>1.</b> Another 50 people died today, all <b>victims</b> of the famine.',
-    questions:[
-      {type:'text', q:'Over 5 million ______ have fled the war and are seeking shelter in neighbouring countries.',
-       accept:['refugees','refugee'], exp:'refugees — people who have escaped their own country because of a war.'},
-      {type:'text', q:'It was the worst road accident the country has ever seen, with over 120 ______.',
-       accept:['casualties'], exp:'casualties — dead and injured people together.'},
-      {type:'text', q:'A: Were there any ______ when the ship sank?  B: I’m afraid not.',
-       accept:['survivors'], exp:'survivors — people who live through a disaster.'},
-      {type:'text', q:'The ______ and wounded were left lying on the battlefield; it was a disgrace. (first gap)',
-       accept:['dead'], exp:'the dead and wounded — a fixed phrase.'},
-      {type:'text', q:'The dead and ______ were left lying on the battlefield; it was a disgrace. (second gap)',
-       accept:['wounded'], exp:'the wounded = people injured in a battle or by a weapon.'},
-      {type:'text', q:'The number of economic ______ entering the country each year has increased sharply.',
-       accept:['migrants','migrant'], exp:'migrants — people who travel from one country to another, often to find work.'}
-    ]
-  },
-  {
-    id:'13.5',
-    title:'Exercise 13.5 — Which diseases are these?',
-    intro:'Identify the disease from its description. Try to do this from memory. The first one is done for you.',
-    example:'<b>1.</b> One that can be caused by a mosquito bite. → <b>malaria</b>',
-    questions:[
-      {type:'mcq', q:'One you can get by drinking infected water.',
-       options:['cholera','rabies','AIDS','malaria'], answer:0,
-       exp:'cholera (and typhoid). Both are often caused by infected food and water, so “typhoid” is also a reasonable answer.'},
-      {type:'mcq', q:'One you can get from an animal bite.',
-       options:['rabies','malaria','cholera','typhoid'], answer:0,
-       exp:'rabies — caused by the bite (or saliva) of an infected dog, fox, etc.'},
-      {type:'mcq', q:'One caused by a virus which destroys the body’s immune system.',
-       options:['AIDS','rabies','malaria','cholera'], answer:0,
-       exp:'AIDS — the illness caused by HIV, which damages the immune system.'}
-    ]
-  }
-];
-
-/* =========================================================
-   5. STATE / NAVIGATION
-   ========================================================= */
-const PAGES = ['home','lessonA','lessonB','lessonC','notebook','practice','exercises','review','notes','dashboard'];
-const TITLES = {
-  home:'Home / Dashboard',
-  lessonA:'Lesson A · Disasters and tragedies',
-  lessonB:'Lesson B · People involved',
-  lessonC:'Lesson C · Diseases and epidemics',
-  notebook:'Vocabulary notebook',
-  practice:'Practice',
-  exercises:'Textbook exercises 13.1–13.5',
-  review:'Error review',
-  notes:'Personal notes',
-  dashboard:'Progress dashboard'
-};
-let currentPage = 'home';
-
-function showPage(id){
-  if(PAGES.indexOf(id) === -1) id = 'home';
-  PAGES.forEach(p=>{
-    const el = document.getElementById('page-'+p);
-    if(el) el.classList.toggle('active', p === id);
-  });
-  $$('.nav-item').forEach(n=>n.classList.toggle('active', n.dataset.page === id));
-  currentPage = id;
-  $('#crumb').textContent = TITLES[id] || '';
-  $('#hlLegend').hidden = !(id === 'lessonA' || id === 'lessonB' || id === 'lessonC');
-  if(window.innerWidth <= 900) document.body.classList.add('nav-closed');
-  window.scrollTo(0,0);
-
-  if(id === 'notebook')  renderNotebook();
-  if(id === 'dashboard') renderDashboard();
-  if(id === 'review')    renderReview();
-  if(id === 'notes')     renderNotes();
-  if(id === 'practice')  { renderMatch(); renderQuizInto('#mixedQuiz','mixed','mixed'); }
-  updateProgress();
+function pickVoice(lang){
+  const target = lang.toLowerCase();
+  const cands = voices.filter(v => (v.lang || '').replace('_','-').toLowerCase().startsWith(target));
+  if (!cands.length) return null;
+  const score = v => {
+    const n = (v.name || '').toLowerCase();
+    let s = 0;
+    if (n.includes('google')) s += 10;          // Google voices – tự nhiên nhất
+    if (n.includes('natural')) s += 9;          // Microsoft Natural (Edge)
+    if (n.includes('neural')) s += 8;
+    if (n.includes('microsoft')) s += 5;
+    if (n.includes('samantha') || n.includes('daniel') || n.includes('alex') ||
+        n.includes('kate') || n.includes('serena')) s += 4;
+    if (v.localService) s += 1;
+    return s;
+  };
+  return cands.sort((a,b) => score(b) - score(a))[0];
 }
 
-/* =========================================================
-   6. VOCABULARY RENDERING
-   ========================================================= */
-function vocabCardHTML(v){
-  const learned = !!DB.learned[v.id];
-  const bm = !!DB.bookmarks[v.id];
-  return '<article class="vcard'+(learned?' learned':'')+'" data-id="'+esc(v.id)+'">'+
-    '<div class="vcard-top">'+
-      '<div>'+
-        '<div class="vword">'+esc(v.word)+' <span class="vipa">'+esc(v.ipa)+'</span></div>'+
-        '<div class="vmeta"><span class="pos">'+esc(v.pos)+'</span><span class="vvi">'+esc(v.vi)+'</span></div>'+
-      '</div>'+
-      '<div class="vcard-actions">'+
-        '<button class="chip-btn spk" data-speak="'+esc(v.word)+'" title="Listen (US English)" aria-label="Listen to pronunciation">'+
-          '<svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'+
-            '<path d="M8 2.5 4.5 6H2v4h2.5L8 13.5z"/>'+
-            '<path d="M11 6a2.5 2.5 0 0 1 0 4"/>'+
-            '<path d="M13 4a5 5 0 0 1 0 8"/>'+
-          '</svg>'+
-        '</button>'+
-        '<button class="chip-btn bm" data-bm="'+esc(v.id)+'" aria-pressed="'+bm+'" title="Bookmark">★</button>'+
-        '<button class="chip-btn ln" data-learn="'+esc(v.id)+'" aria-pressed="'+learned+'" title="Mark as learned">✓</button>'+
-      '</div>'+
-    '</div>'+
-    '<div class="vdef"><b>Definition:</b> '+esc(v.defEn)+'</div>'+
-    '<div class="vdef-vi">'+esc(v.defVi)+'</div>'+
-    '<div class="vex"><b>Example:</b> '+esc(v.ex)+'<div class="vex-vi">'+esc(v.exVi)+'</div></div>'+
-    '<div class="vcolloc"><b>Collocations:</b> '+esc(v.colloc)+'</div>'+
-    (v.note ? '<div class="vnote"><b>Note:</b> '+esc(v.note)+'</div>' : '')+
-  '</article>';
-}
-
-function renderVocabGroups(){
-  $$('[data-vocab-group]').forEach(function(box){
-    const g = box.dataset.vocabGroup;
-    box.innerHTML = VOCAB.filter(v=>v.group === g).map(vocabCardHTML).join('');
-  });
-}
-
-function bindVocabClicks(root){
-  root = root || document;
-  root.addEventListener('click', function(e){
-    // Speak button
-    const spkBtn = e.target.closest('[data-speak]');
-    if(spkBtn){
-      speak(spkBtn.dataset.speak);
-      return;
-    }
-    // Bookmark
-    const bmBtn = e.target.closest('[data-bm]');
-    if(bmBtn){
-      const id = bmBtn.dataset.bm;
-      DB.bookmarks[id] = !DB.bookmarks[id];
-      if(!DB.bookmarks[id]) delete DB.bookmarks[id];
-      bmBtn.setAttribute('aria-pressed', !!DB.bookmarks[id]);
-      saveDB(); updateProgress();
-      return;
-    }
-    // Learned
-    const lnBtn = e.target.closest('[data-learn]');
-    if(lnBtn){
-      const id = lnBtn.dataset.learn;
-      DB.learned[id] = !DB.learned[id];
-      if(!DB.learned[id]) delete DB.learned[id];
-      lnBtn.setAttribute('aria-pressed', !!DB.learned[id]);
-      const card = lnBtn.closest('.vcard');
-      if(card) card.classList.toggle('learned', !!DB.learned[id]);
-      saveDB(); updateProgress();
-      return;
-    }
-    // Practice mode: reveal Vietnamese on click
-    if(document.body.classList.contains('nb-hidevi')){
-      const card = e.target.closest('.vcard');
-      if(card && (e.target.closest('.vvi') || e.target.closest('.vdef-vi') || e.target.closest('.vex-vi'))){
-        card.classList.toggle('revealed');
-      }
-    }
-  });
-}
-
-/* =========================================================
-   7. MINI QUIZ RENDERER
-   ========================================================= */
-function renderQuizInto(sel, bankKey, storeKey){
-  const box = $(sel);
-  if(!box) return;
-  const items = QUIZZES[bankKey] || [];
-  box.innerHTML = items.map(function(q,i){
-    return '<div class="q" data-q="'+i+'">'+
-      '<div class="q-prompt"><span class="qnum">'+(i+1)+'.</span> '+esc(q.q)+'</div>'+
-      '<div class="opts">'+ q.options.map(function(o,j){
-        return '<label class="opt"><input type="radio" name="'+storeKey+'-'+i+'" value="'+j+'"><span>'+esc(o)+'</span></label>';
-      }).join('') +'</div>'+
-      '<div class="fb" hidden></div>'+
-    '</div>';
-  }).join('') +
-  '<div class="btn-row"><button class="btn primary sm" data-checkquiz="'+storeKey+'">Check answers</button>'+
-  '<button class="btn sm ghost" data-resetquiz="'+storeKey+'">Retry</button>'+
-  '<span class="ex-score" data-quizscore="'+storeKey+'"></span></div>';
-  box.dataset.bank = bankKey;
-}
-
-function checkMiniQuiz(storeKey, box){
-  const bank = QUIZZES[box.dataset.bank] || [];
-  let correct = 0;
-  bank.forEach(function(q,i){
-    const qEl = box.querySelector('.q[data-q="'+i+'"]');
-    if(!qEl) return;
-    const fb = qEl.querySelector('.fb');
-    const chosen = qEl.querySelector('input[type=radio]:checked');
-    const ok = chosen && (+chosen.value === q.answer);
-    qEl.querySelectorAll('.opt').forEach(function(o,j){
-      o.classList.toggle('correct', j === q.answer);
-      if(chosen && +chosen.value === j && j !== q.answer) o.classList.add('wrong');
-    });
-    if(ok) correct++;
-    if(fb){
-      fb.hidden = false;
-      fb.className = 'fb ' + (ok ? 'good' : 'bad');
-      fb.innerHTML = (ok ? '✔ Correct. ' : '✘ Not quite. ') + esc(q.exp) +
-        (ok ? '' : ' <span class="ans">Answer: ' + esc(q.options[q.answer]) + '</span>');
-    }
-
-    const wkey = storeKey + ':' + i;
-    if(ok){ delete DB.quiz.wrong[wkey]; }
-    else{
-      DB.quiz.wrong[wkey] = {ex:storeKey, q:q.q, given: chosen ? q.options[+chosen.value] : '(no answer)',
-                             answer:q.options[q.answer], exp:q.exp};
-    }
-  });
-  const pct = Math.round(correct / bank.length * 100);
-  const sc = box.querySelector('[data-quizscore="'+storeKey+'"]');
-  if(sc) sc.textContent = correct + '/' + bank.length + ' — ' + pct + '%';
-  recordAttempt(pct);
-  saveDB(); updateProgress();
-}
-
-function recordAttempt(pct){
-  DB.quiz.attempts = (DB.quiz.attempts || 0) + 1;
-  DB.quiz.last = pct;
-  DB.quiz.best = (DB.quiz.best == null) ? pct : Math.max(DB.quiz.best, pct);
-}
-
-/* =========================================================
-   8. TEXTBOOK EXERCISES
-   ========================================================= */
-function renderExercises(){
-  const wrap = $('#exWrap');
-  if(!wrap) return;
-  wrap.innerHTML = EX.map(function(ex){
-    const body = ex.custom ? ex.custom : ex.questions.map(function(q,i){
-      if(q.type === 'mcq'){
-        return '<div class="q" data-q="'+i+'">'+
-          '<div class="q-prompt"><span class="qnum">'+(i+1)+'.</span> '+esc(q.q)+'</div>'+
-          '<div class="opts">'+q.options.map(function(o,j){
-            return '<label class="opt"><input type="radio" name="'+ex.id+'-'+i+'" value="'+j+'"><span>'+esc(o)+'</span></label>';
-          }).join('')+'</div><div class="fb" hidden></div></div>';
-      }
-      return '<div class="q" data-q="'+i+'">'+
-        '<div class="q-prompt"><span class="qnum">'+(i+1)+'.</span> '+esc(q.q)+'</div>'+
-        '<input class="qinput" type="text" autocomplete="off" spellcheck="false">'+
-        '<div class="fb" hidden></div></div>';
-    }).join('');
-
-    return '<section class="card ex" data-ex="'+ex.id+'">'+
-      '<h2>'+esc(ex.title)+'</h2>'+
-      '<p class="muted small">'+esc(ex.intro)+'</p>'+
-      (ex.example ? '<div class="worked">'+ex.example+'</div>' : '')+
-      '<div class="qlist">'+body+'</div>'+
-      '<div class="btn-row">'+
-        '<button class="btn primary sm" data-check="'+ex.id+'">Check answers</button>'+
-        '<button class="btn sm ghost" data-retry="'+ex.id+'">Retry</button>'+
-        '<span class="ex-score" data-score="'+ex.id+'"></span>'+
-      '</div>'+
-    '</section>';
-  }).join('');
-}
-
-function checkExercise(id){
-  const ex = EX.find(function(e){ return e.id === id; });
-  if(!ex) return;
-  const exEl = document.querySelector('.ex[data-ex="'+id+'"]');
-  if(!exEl) return;
-  let correct = 0;
-
-  ex.questions.forEach(function(q,i){
-    const qEl = exEl.querySelector('.q[data-q="'+i+'"]');
-    if(!qEl) return;
-    const fb = qEl.querySelector('.fb');
-    let ok = false, given = '', answerText = '';
-
-    if(q.type === 'mcq'){
-      const chosen = qEl.querySelector('input[type=radio]:checked');
-      answerText = q.options[q.answer];
-      given = chosen ? q.options[+chosen.value] : '(no answer)';
-      ok = !!(chosen && +chosen.value === q.answer);
-      qEl.querySelectorAll('.opt').forEach(function(o,j){
-        o.classList.toggle('correct', j === q.answer);
-        if(chosen && +chosen.value === j && j !== q.answer) o.classList.add('wrong');
-      });
-    }else{
-      const inp = qEl.querySelector('input.qinput');
-      answerText = q.accept[0];
-      given = inp ? inp.value.trim() : '';
-      ok = q.accept.some(function(a){ return norm(a) === norm(given); });
-      if(inp){
-        inp.classList.toggle('correct', ok);
-        inp.classList.toggle('wrong', !ok && given !== '');
-      }
-    }
-
-    if(ok) correct++;
-    if(fb){
-      fb.hidden = false;
-      fb.className = 'fb ' + (ok ? 'good' : 'bad');
-      fb.innerHTML = (ok ? '✔ Correct. ' : '✘ Not quite. ') + esc(q.exp) +
-        (ok ? '' : ' <span class="ans">Answer: ' + esc(answerText) + '</span>');
-    }
-
-    const wkey = id + ':' + i;
-    if(ok){ delete DB.quiz.wrong[wkey]; }
-    else{
-      DB.quiz.wrong[wkey] = {
-        ex:id, q:(q.q || (ex.title + ' — item ' + (i+1))),
-        given: given || '(no answer)', answer: answerText, exp: q.exp
-      };
-    }
-  });
-
-  const pct = Math.round(correct / ex.questions.length * 100);
-  const sc = exEl.querySelector('[data-score="'+id+'"]');
-  if(sc) sc.textContent = correct + '/' + ex.questions.length + ' — ' + pct + '%';
-
-  DB.checked[id] = true;
-  recordAttempt(pct);
-  saveDB(); updateProgress();
-  toast('Exercise ' + id + ': ' + pct + '%');
-}
-
-function resetExercise(id){
-  const exEl = document.querySelector('.ex[data-ex="'+id+'"]');
-  if(!exEl) return;
-  exEl.querySelectorAll('input[type=radio]').forEach(function(r){ r.checked = false; });
-  exEl.querySelectorAll('input.qinput').forEach(function(r){
-    r.value = ''; r.classList.remove('correct','wrong');
-  });
-  exEl.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('correct','wrong'); });
-  exEl.querySelectorAll('.fb').forEach(function(f){ f.hidden = true; f.className = 'fb'; f.textContent = ''; });
-  const sc = exEl.querySelector('[data-score]');
-  if(sc) sc.textContent = '';
-}
-
-/* =========================================================
-   9. HIGHLIGHTING (rewritten — preserves DOM, uses text nodes)
-   ========================================================= */
-function unwrapMarks(block){
-  block.querySelectorAll('mark.hl').forEach(function(m){
-    const parent = m.parentNode;
-    while(m.firstChild) parent.insertBefore(m.firstChild, m);
-    parent.removeChild(m);
-  });
-  block.normalize();
-}
-
-function applyHighlights(block){
-  const id = block.dataset.hl;
-  if(!id) return;
-  if(!block.dataset.hlReady){
-    block.dataset.hlReady = '1';
-  }
-  // First, remove existing marks
-  unwrapMarks(block);
-
-  const ranges = (DB.highlights[id] || []).slice().sort(function(a,b){ return a.start - b.start; });
-  if(!ranges.length) return;
-
-  // Collect text nodes and their absolute offset ranges
-  const textNodes = [];
-  let offset = 0;
-  const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT, null);
-  let node;
-  while((node = walker.nextNode())){
-    const len = node.textContent.length;
-    if(len > 0) textNodes.push({node: node, start: offset, end: offset + len});
-    offset += len;
-  }
-  if(!textNodes.length) return;
-
-  // Process each text node from right to left (so splitting doesn't affect
-  // text nodes to the left that we haven't processed yet)
-  for(let i = textNodes.length - 1; i >= 0; i--){
-    const tn = textNodes[i];
-    const text = tn.node.textContent;
-    if(!text) continue;
-    const colors = new Array(text.length).fill(null);
-    // Later ranges overwrite earlier ones at the same position
-    ranges.forEach(function(r){
-      const s = Math.max(0, r.start - tn.start);
-      const e = Math.min(text.length, r.end - tn.start);
-      for(let k = s; k < e; k++) colors[k] = r.color;
-    });
-    // Build runs of same colour
-    const runs = [];
-    let curColor = null, runStart = 0;
-    for(let k = 0; k <= colors.length; k++){
-      const c = k < colors.length ? colors[k] : null;
-      if(c !== curColor){
-        if(curColor !== null) runs.push({start: runStart, end: k, color: curColor});
-        runStart = k;
-        curColor = c;
-      }
-    }
-    if(!runs.length) continue;
-    // Apply runs right-to-left
-    let curNode = tn.node;
-    for(let k = runs.length - 1; k >= 0; k--){
-      const run = runs[k];
-      // Split off the part after run.end (if needed)
-      if(run.end < curNode.textContent.length){
-        curNode.splitText(run.end);
-      }
-      if(run.start > 0){
-        const after = curNode.splitText(run.start);
-        const mark = document.createElement('mark');
-        mark.className = 'hl hl-' + run.color;
-        after.parentNode.replaceChild(mark, after);
-        mark.appendChild(after);
-      }else{
-        const mark = document.createElement('mark');
-        mark.className = 'hl hl-' + run.color;
-        curNode.parentNode.replaceChild(mark, curNode);
-        mark.appendChild(curNode);
-      }
-    }
-  }
-}
-
-function applyAllHighlights(){
-  $$('.hlblock[data-hl]').forEach(function(block){
-    try{ applyHighlights(block); }catch(e){ /* skip broken block */ }
-  });
-}
-
-function localOffsets(block, range){
-  const total = block.textContent.length;
-  let start = 0, end = total;
-  if(block.contains(range.startContainer)){
-    const r = document.createRange();
-    r.selectNodeContents(block);
-    try{ r.setEnd(range.startContainer, range.startOffset); }catch(e){}
-    start = r.toString().length;
-  }
-  if(block.contains(range.endContainer)){
-    const r = document.createRange();
-    r.selectNodeContents(block);
-    try{ r.setEnd(range.endContainer, range.endOffset); }catch(e){}
-    end = r.toString().length;
-  }
-  start = Math.max(0, Math.min(total, start));
-  end   = Math.max(0, Math.min(total, end));
-  if(end < start){ const t = start; start = end; end = t; }
-  return {start:start, end:end};
-}
-
-let pendingSelection = null;
-
-function showToolbarNear(rect){
-  const tb = $('#hlToolbar');
-  tb.hidden = false;
-  const w = tb.offsetWidth || 210;
-  const h = tb.offsetHeight || 40;
-  let left = rect.left + rect.width/2 - w/2;
-  let top = rect.top - h - 10;
-  if(top < 60) top = rect.bottom + 10;
-  left = Math.max(8, Math.min(window.innerWidth - w - 8, left));
-  top = Math.max(8, Math.min(window.innerHeight - h - 8, top));
-  tb.style.left = left + 'px';
-  tb.style.top = top + 'px';
-}
-function hideToolbar(){
-  const tb = $('#hlToolbar');
-  if(tb) tb.hidden = true;
-  // NOTE: we deliberately do NOT clear pendingSelection here,
-  // because on touch devices the selection may be briefly lost
-  // while the user taps the colour swatch.
-}
-
-function evaluateSelection(){
-  const sel = window.getSelection();
-  if(!sel || sel.isCollapsed || sel.rangeCount === 0){ hideToolbar(); return; }
-  const range = sel.getRangeAt(0);
-  if(range.collapsed){ hideToolbar(); return; }
-
-  const container = range.commonAncestorContainer;
-  const el = container.nodeType === 1 ? container : container.parentElement;
-  if(!el || !el.closest('#content')){ hideToolbar(); return; }
-  if(el.closest('input, textarea, select')){ hideToolbar(); return; }
-
-  const blocks = $$('.hlblock[data-hl]').filter(function(b){
-    try{ return range.intersectsNode(b); }catch(e){ return false; }
-  });
-  if(!blocks.length){ hideToolbar(); return; }
-
-  pendingSelection = {range:range.cloneRange(), blocks:blocks};
-
-  let rect = range.getBoundingClientRect();
-  if(!rect || (rect.width === 0 && rect.height === 0)){
-    const rects = range.getClientRects();
-    if(rects && rects.length) rect = rects[rects.length-1];
-  }
-  if(rect && (rect.width || rect.height)) showToolbarNear(rect);
-  else hideToolbar();
-}
-
-function applyColorToSelection(color){
-  if(!pendingSelection){ toast('Please select some text first'); return; }
-  const range = pendingSelection.range;
-  const targets = [];
-  pendingSelection.blocks.forEach(function(block){
-    let hit = false;
-    try{ hit = range.intersectsNode(block); }catch(e){ hit = false; }
-    if(!hit) return;
-    const o = localOffsets(block, range);
-    if(o.end > o.start) targets.push({block:block, start:o.start, end:o.end});
-  });
-  if(!targets.length){ hideToolbar(); pendingSelection = null; return; }
-  targets.forEach(function(t){
-    const id = t.block.dataset.hl;
-    if(!DB.highlights[id]) DB.highlights[id] = [];
-    DB.highlights[id].push({start:t.start, end:t.end, color:color});
-    if(DB.highlights[id].length > 60) DB.highlights[id] = DB.highlights[id].slice(-60);
-  });
-  targets.forEach(function(t){
-    try{ applyHighlights(t.block); }catch(e){}
-  });
-  saveNow();
-  toast('Highlight saved');
-  try{ window.getSelection().removeAllRanges(); }catch(e){}
-  hideToolbar();
-  pendingSelection = null;
-}
-
-function removeHighlightFromSelection(){
-  if(!pendingSelection) return;
-  const range = pendingSelection.range;
-  const targets = [];
-  pendingSelection.blocks.forEach(function(block){
-    let hit = false;
-    try{ hit = range.intersectsNode(block); }catch(e){ hit = false; }
-    if(!hit) return;
-    const o = localOffsets(block, range);
-    if(o.end > o.start) targets.push({block:block, start:o.start, end:o.end});
-  });
-  let changed = false;
-  targets.forEach(function(t){
-    const id = t.block.dataset.hl;
-    if(!DB.highlights[id]) return;
-    const before = DB.highlights[id].length;
-    DB.highlights[id] = DB.highlights[id].filter(function(r){
-      return !(r.start < t.end && r.end > t.start);
-    });
-    if(DB.highlights[id].length !== before) changed = true;
-    if(!DB.highlights[id].length) delete DB.highlights[id];
-    try{ applyHighlights(t.block); }catch(e){}
-  });
-  if(changed){ saveNow(); toast('Highlight removed'); }
-  try{ window.getSelection().removeAllRanges(); }catch(e){}
-  hideToolbar();
-  pendingSelection = null;
-}
-
-function clearAllHighlights(){
-  DB.highlights = {};
-  saveNow();
-  $$('.hlblock[data-hl]').forEach(function(b){
-    try{ unwrapMarks(b); }catch(e){}
-  });
-  toast('All highlights cleared');
-}
-
-/* =========================================================
-   10. NOTEBOOK
-   ========================================================= */
-let nbFilters = {q:'', section:'all', pos:'all', view:'all'};
-
-function renderNotebook(){
-  const list = $('#nbList');
-  if(!list) return;
-  const q = norm($('#nbSearch') ? $('#nbSearch').value : '');
-  const section = $('#nbSection') ? $('#nbSection').value : 'all';
-  const pos = $('#nbPos') ? $('#nbPos').value : 'all';
-  const view = $('#nbView') ? $('#nbView').value : 'all';
-  nbFilters = {q:q, section:section, pos:pos, view:view};
-
-  let items = VOCAB.filter(function(v){
-    if(section !== 'all' && v.section !== section) return false;
-    if(pos !== 'all' && v.pos !== pos) return false;
-    if(view === 'bm' && !DB.bookmarks[v.id]) return false;
-    if(view === 'learned' && !DB.learned[v.id]) return false;
-    if(view === 'todo' && DB.learned[v.id]) return false;
-    if(q){
-      const hay = (v.word + ' ' + v.vi + ' ' + v.defEn + ' ' + v.defVi + ' ' + v.colloc).toLowerCase();
-      if(hay.indexOf(q) === -1) return false;
-    }
-    return true;
-  });
-
-  const cnt = $('#nbCount');
-  if(cnt) cnt.textContent = items.length + ' of ' + VOCAB.length + ' words';
-
-  if(!items.length){
-    list.innerHTML = '<div class="card"><p class="muted">No vocabulary matches your search. Try another word.</p></div>';
+function updateVoiceNote(){
+  const noteEl = document.getElementById('voiceNote');
+  if (!synth){
+    noteEl.textContent = '⚠️ Trình duyệt của bạn không hỗ trợ phát âm (Web Speech API). Hãy dùng Chrome, Edge hoặc Safari.';
     return;
   }
-  list.innerHTML = items.map(vocabCardHTML).join('');
-  list.classList.toggle('hide-vi', document.body.classList.contains('nb-hidevi'));
-}
-
-/* flashcards */
-let flashDeck = [], flashIndex = 0, flashFlipped = false;
-function buildDeck(){
-  flashDeck = VOCAB.slice();
-  for(let i = flashDeck.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    const t = flashDeck[i]; flashDeck[i] = flashDeck[j]; flashDeck[j] = t;
+  const hasUS = !!pickVoice('en-US');
+  const hasGB = !!pickVoice('en-GB');
+  if (!hasUS && !hasGB){
+    noteEl.textContent = '⚠️ Chưa tìm thấy giọng tiếng Anh. Hãy cài thêm gói giọng đọc trong phần cài đặt hệ điều hành.';
+  } else if (!hasGB){
+    noteEl.textContent = 'ℹ️ Máy chưa có giọng Anh–Anh (en-GB) — sẽ tạm dùng giọng tiếng Anh sẵn có.';
+  } else if (!hasUS){
+    noteEl.textContent = 'ℹ️ Máy chưa có giọng Anh–Mỹ (en-US) — sẽ tạm dùng giọng tiếng Anh sẵn có.';
+  } else {
+    noteEl.textContent = '✅ Đã tìm thấy giọng Anh–Mỹ và Anh–Anh trên thiết bị.';
   }
-  flashIndex = 0; flashFlipped = false;
-  paintFlash();
-}
-function paintFlash(){
-  const v = flashDeck[flashIndex];
-  if(!v) return;
-  $('#flashWord').textContent = v.word;
-  $('#flashIpa').textContent = v.ipa + ' · ' + v.pos;
-  const back = $('#flashBack');
-  back.hidden = !flashFlipped;
-  back.innerHTML = '<div class="vi">'+esc(v.vi)+'</div><div class="small muted">'+esc(v.defEn)+'</div>'+
-                   '<div class="small" style="margin-top:8px">'+esc(v.ex)+'</div>';
-  $('#flashPos').textContent = 'Card ' + (flashIndex+1) + ' / ' + flashDeck.length;
-}
-function openFlash(){
-  $('#flashWrap').style.display = 'block';
-  buildDeck();
-  $('#flashWrap').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
-/* =========================================================
-   11. MATCHING GAME
-   ========================================================= */
-let matchPairs = [], matchSel = null, matchDone = 0;
-function renderMatch(){
-  const left = $('#mLeft'), right = $('#mRight');
-  if(!left || !right) return;
-  const pool = VOCAB.slice();
-  for(let i = pool.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); const t = pool[i]; pool[i] = pool[j]; pool[j] = t; }
-  matchPairs = pool.slice(0,6).map(function(v){ return {id:v.id, word:v.word, vi:v.vi}; });
-  matchSel = null; matchDone = 0;
+function speak(text, lang, btnEl){
+  if (!synth) return;
+  try { synth.cancel(); } catch(e){}
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = 0.92;
+  u.pitch = 1;
+  u.volume = 1;
+  const v = pickVoice(lang);
+  if (v) u.voice = v;
 
-  left.innerHTML = matchPairs.map(function(p){
-    return '<button class="mitem" data-side="l" data-id="'+esc(p.id)+'">'+esc(p.word)+'</button>';
-  }).join('');
-
-  const shuffled = matchPairs.slice();
-  for(let i = shuffled.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); const t = shuffled[i]; shuffled[i] = shuffled[j]; shuffled[j] = t; }
-  right.innerHTML = shuffled.map(function(p){
-    return '<button class="mitem" data-side="r" data-id="'+esc(p.id)+'">'+esc(p.vi)+'</button>';
-  }).join('');
-
-  const st = $('#matchStatus'); if(st) st.textContent = '';
+  if (btnEl){
+    btnEl.classList.add('playing');
+    u.onend = () => btnEl.classList.remove('playing');
+    u.onerror = () => btnEl.classList.remove('playing');
+  }
+  synth.speak(u);
 }
 
 /* =========================================================
-   12. NOTES
+   4. RENDER
    ========================================================= */
-const NOTE_SECTIONS = [
-  {k:'A', t:'Lesson A — Disasters and tragedies'},
-  {k:'B', t:'Lesson B — People involved in disasters'},
-  {k:'C', t:'Lesson C — Diseases and epidemics'},
-  {k:'G', t:'General notes / questions for my teacher'}
-];
-function renderNotes(){
-  const wrap = $('#notesWrap');
-  if(!wrap) return;
-  wrap.innerHTML = NOTE_SECTIONS.map(function(s){
-    return '<div class="note-item">'+
-      '<label for="note-'+s.k+'">'+esc(s.t)+'<span class="note-status" id="ns-'+s.k+'"></span></label>'+
-      '<textarea id="note-'+s.k+'" data-note="'+s.k+'" placeholder="Write your notes here…">'+esc(DB.notes[s.k] || '')+'</textarea>'+
-    '</div>';
-  }).join('');
+const cardEl   = document.getElementById('card');
+const frontEl  = document.getElementById('front');
+const backEl   = document.getElementById('back');
+const fillEl   = document.getElementById('fill');
+const counterEl= document.getElementById('counter');
+
+const escAttr = s => String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+
+function render(){
+  const it = list[idx];
+  if (!it) return;
+
+  const usOn = accent === 'en-US' ? ' on' : '';
+  const gbOn = accent === 'en-GB' ? ' on' : '';
+
+  frontEl.innerHTML = `
+    <div class="badge">${CATS[it.c]}</div>
+    <div class="word">${it.w}</div>
+    <div class="meta">
+      <span class="pos">${it.p}</span>
+      <span class="ipa">${it.ipa}</span>
+    </div>
+    <div class="speak-row">
+      <button class="speak${usOn}" data-say="${escAttr(it.w)}" data-lang="en-US">🇺🇸 US</button>
+      <button class="speak${gbOn}" data-say="${escAttr(it.w)}" data-lang="en-GB">🇬🇧 UK</button>
+    </div>
+    <div class="flip-hint">Nhấn để xem nghĩa →</div>
+  `;
+
+  backEl.innerHTML = `
+    <div class="badge">${CATS[it.c]}</div>
+    <div class="word-sm">${it.w} <span class="ipa">${it.ipa}</span></div>
+    <div class="meaning">${it.vi}</div>
+    <div class="example">“${it.ex}”</div>
+    <div class="speak-row">
+      <button class="speak" data-say="${escAttr(it.ex)}" data-lang="en-US">🇺🇸 Nghe câu</button>
+      <button class="speak" data-say="${escAttr(it.ex)}" data-lang="en-GB">🇬🇧 Nghe câu</button>
+    </div>
+    <div class="flip-hint">← Nhấn để quay lại</div>
+  `;
+
+  cardEl.classList.toggle('flipped', flipped);
+  counterEl.textContent = `${idx + 1} / ${list.length}`;
+  fillEl.style.width = ((idx + 1) / list.length * 100) + '%';
+
+  if (document.getElementById('autoPlay').checked){
+    speak(it.w, accent);
+  }
 }
-function exportNotes(){
-  let out = 'Unit 13 – Global Problems — My notes\n' + new Date().toLocaleString() + '\n\n';
-  NOTE_SECTIONS.forEach(function(s){
-    out += '=== ' + s.t + ' ===\n';
-    out += (DB.notes[s.k] && DB.notes[s.k].trim() ? DB.notes[s.k] : '(no notes)') + '\n\n';
-  });
-  const blob = new Blob([out], {type:'text/plain;charset=utf-8'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'unit13-notes.txt';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1500);
-  toast('Notes exported');
+
+function toggleFlip(){
+  flipped = !flipped;
+  cardEl.classList.toggle('flipped', flipped);
+}
+
+function go(delta){
+  if (!list.length) return;
+  idx = (idx + delta + list.length) % list.length;
+  flipped = false;
+  render();
 }
 
 /* =========================================================
-   13. REVIEW LIST
+   5. SỰ KIỆN
    ========================================================= */
-function renderReview(){
-  const box = $('#reviewList');
-  if(!box) return;
-  const keys = Object.keys(DB.quiz.wrong);
-  if(!keys.length){
-    box.innerHTML = '<p class="muted">Nothing to review yet. Do the exercises, and any wrong answers will appear here.</p>';
+// Lật thẻ + phát âm (event delegation)
+cardEl.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-say]');
+  if (btn){
+    speak(btn.dataset.say, btn.dataset.lang, btn);
     return;
   }
-  box.innerHTML = keys.map(function(k){
-    const w = DB.quiz.wrong[k];
-    return '<div class="wrong-item">'+
-      '<div class="qtext">'+esc(w.q)+'</div>'+
-      '<div>Your answer: <span class="yours">'+esc(w.given)+'</span> · Correct: <span class="right">'+esc(w.answer)+'</span></div>'+
-      '<div class="small muted" style="margin-top:4px">'+esc(w.exp)+'</div>'+
-    '</div>';
-  }).join('');
-}
+  toggleFlip();
+});
 
-/* =========================================================
-   14. DASHBOARD + PROGRESS
-   ========================================================= */
-function learnedCount(){
-  return VOCAB.filter(function(v){ return !!DB.learned[v.id]; }).length;
-}
-function updateProgress(){
-  const learned = learnedCount();
-  const total = VOCAB.length;
-  const pct = Math.round(learned / total * 100);
+// Điều hướng
+document.getElementById('prevBtn').addEventListener('click', () => go(-1));
+document.getElementById('nextBtn').addEventListener('click', () => go(1));
+document.getElementById('flipBtn').addEventListener('click', toggleFlip);
 
-  const sideBar = $('#sideProgressBar');
-  const sideTxt = $('#sideProgressText');
-  if(sideBar) sideBar.style.width = pct + '%';
-  if(sideTxt) sideTxt.textContent = pct + '%';
-
-  const hl = $('#homeLearned'); if(hl) hl.textContent = learned + ' / ' + total;
-  const hs = $('#homeSections');
-  if(hs) hs.textContent = ['lessonA','lessonB','lessonC'].filter(function(k){ return DB.completed[k]; }).length + ' / 3';
-  const hb = $('#homeBest'); if(hb) hb.textContent = DB.quiz.best == null ? '—' : DB.quiz.best + '%';
-  const hbm = $('#homeBm'); if(hbm) hbm.textContent = Object.keys(DB.bookmarks).filter(function(k){ return DB.bookmarks[k]; }).length;
-
-  ['lessonA','lessonB','lessonC'].forEach(function(k){
-    const cb = document.querySelector('[data-complete="'+k+'"]');
-    if(cb) cb.checked = !!DB.completed[k];
-  });
-}
-
-function renderDashboard(){
-  const learned = learnedCount();
-  const total = VOCAB.length;
-  const pct = Math.round(learned / total * 100);
-  const bms = Object.keys(DB.bookmarks).filter(function(k){ return DB.bookmarks[k]; }).length;
-  const noteCount = NOTE_SECTIONS.filter(function(s){ return (DB.notes[s.k]||'').trim(); }).length;
-  const wrongCount = Object.keys(DB.quiz.wrong).length;
-
-  $('#dashStats').innerHTML =
-    stat('Vocabulary learned', learned + ' / ' + total) +
-    stat('Learning completion', pct + '%') +
-    stat('Bookmarked words', bms) +
-    stat('Notes written', noteCount + ' / ' + NOTE_SECTIONS.length) +
-    stat('Quiz attempts', DB.quiz.attempts || 0) +
-    stat('Latest score', (DB.quiz.last == null ? '—' : DB.quiz.last + '%')) +
-    stat('Best score', (DB.quiz.best == null ? '—' : DB.quiz.best + '%')) +
-    stat('Awaiting review', wrongCount);
-
-  const secs = [
-    {k:'lessonA', t:'Lesson A — Disasters and tragedies'},
-    {k:'lessonB', t:'Lesson B — People involved'},
-    {k:'lessonC', t:'Lesson C — Diseases and epidemics'},
-    {k:'practice', t:'Practice (matching + mixed quiz)'},
-    {k:'exercises', t:'Textbook exercises 13.1–13.5'}
-  ];
-  $('#dashSections').innerHTML = secs.map(function(s){
-    const done = !!DB.completed[s.k];
-    return '<div class="checkline"><input type="checkbox" data-dashcomplete="'+s.k+'" '+(done?'checked':'')+'>'+
-      '<label>'+esc(s.t)+'</label>'+
-      '<span class="small '+(done?'':'muted')+'" style="margin-left:auto">'+(done?'completed':'not yet')+'</span></div>';
-  }).join('');
-
-  const exDone = Object.keys(DB.checked).length;
-  $('#dashQuiz').innerHTML =
-    '<p class="small">Exercises checked: <b>'+exDone+' / 5</b></p>' +
-    '<p class="small">Incorrect answers awaiting review: <b>'+wrongCount+'</b></p>' +
-    '<div class="btn-row"><button class="btn sm" data-goto="review">Open Error review</button>'+
-    '<button class="btn sm" data-goto="exercises">Open exercises</button></div>';
-
-  $$('#dashSections input[data-dashcomplete]').forEach(function(cb){
-    cb.addEventListener('change', function(){
-      DB.completed[cb.dataset.dashcomplete] = cb.checked;
-      if(!cb.checked) delete DB.completed[cb.dataset.dashcomplete];
-      saveDB(); renderDashboard(); updateProgress();
-    });
-  });
-}
-function stat(k,v){
-  return '<div class="stat"><div class="k">'+esc(k)+'</div><div class="v">'+esc(v)+'</div></div>';
-}
-
-/* =========================================================
-   15. THEME
-   ========================================================= */
-function applyTheme(){
-  document.documentElement.setAttribute('data-theme', DB.theme === 'dark' ? 'dark' : 'light');
-}
-
-/* =========================================================
-   16. INIT
-   ========================================================= */
-function init(){
-  loadDB();
-  initTTS();
-  applyTheme();
-  renderVocabGroups();
-  renderExercises();
-  bindVocabClicks(document);
-
-  // mini quizzes
-  renderQuizInto('#miniA','miniA','miniA');
-  renderQuizInto('#pracA','pracA','pracA');
-  renderQuizInto('#miniB','miniB','miniB');
-  renderQuizInto('#pracB','pracB','pracB');
-  renderQuizInto('#miniC','miniC','miniC');
-  renderQuizInto('#pracC','pracC','pracC');
-
-  // Apply saved highlights AFTER the DOM is fully built
-  applyAllHighlights();
-  updateProgress();
-
-  // sidebar toggle
-  $('#menuBtn').addEventListener('click', function(){
-    document.body.classList.toggle('nav-closed');
-    const bd = $('#backdrop');
-    bd.classList.toggle('show', !document.body.classList.contains('nav-closed') && window.innerWidth <= 900);
-  });
-  $('#backdrop').addEventListener('click', function(){
-    document.body.classList.add('nav-closed');
-    this.classList.remove('show');
-  });
-  if(window.innerWidth <= 900) document.body.classList.add('nav-closed');
-
-  // nav
-  $$('.nav-item').forEach(function(n){
-    n.addEventListener('click', function(){ showPage(n.dataset.page); });
-  });
-  document.addEventListener('click', function(e){
-    const g = e.target.closest('[data-goto]');
-    if(g){ showPage(g.dataset.goto); }
-  });
-
-  // theme
-  $('#themeBtn').addEventListener('click', function(){
-    DB.theme = (DB.theme === 'dark') ? 'light' : 'dark';
-    applyTheme(); saveDB();
-  });
-
-  // scroll progress
-  window.addEventListener('scroll', function(){
-    const doc = document.documentElement;
-    const max = doc.scrollHeight - window.innerHeight;
-    const p = max > 0 ? Math.min(100, Math.max(0, window.scrollY / max * 100)) : 0;
-    $('#scrollProgress').style.width = p + '%';
-  }, {passive:true});
-
-  // global search
-  $('#globalSearch').addEventListener('input', function(e){
-    const val = e.target.value;
-    if(currentPage !== 'notebook') showPage('notebook');
-    const nb = $('#nbSearch');
-    if(nb) nb.value = val;
-    renderNotebook();
-  });
-
-  /* ---- lesson completion checkboxes ---- */
-  document.addEventListener('change', function(e){
-    const cb = e.target.closest('[data-complete]');
-    if(cb){
-      const k = cb.dataset.complete;
-      DB.completed[k] = cb.checked;
-      if(!cb.checked) delete DB.completed[k];
-      saveDB(); updateProgress();
-      toast(cb.checked ? 'Marked as completed' : 'Marked as not completed');
-    }
-  });
-
-  /* ---- quiz buttons ---- */
-  document.addEventListener('click', function(e){
-    const cq = e.target.closest('[data-checkquiz]');
-    if(cq){
-      const key = cq.dataset.checkquiz;
-      const scEl = document.querySelector('[data-quizscore="'+key+'"]');
-      const holder = scEl.closest('.card').querySelector('.q[data-q="0"]').parentElement;
-      checkMiniQuiz(key, holder);
-      return;
-    }
-    const rq = e.target.closest('[data-resetquiz]');
-    if(rq){
-      const key = rq.dataset.resetquiz;
-      const scEl = document.querySelector('[data-quizscore="'+key+'"]');
-      const holder = scEl.closest('.card').querySelector('.q[data-q="0"]').parentElement;
-      holder.querySelectorAll('input[type=radio]').forEach(function(r){ r.checked = false; });
-      holder.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('correct','wrong'); });
-      holder.querySelectorAll('.fb').forEach(function(f){ f.hidden = true; f.className = 'fb'; f.textContent=''; });
-      if(scEl) scEl.textContent = '';
-      return;
-    }
-    const ck = e.target.closest('[data-check]');
-    if(ck){ checkExercise(ck.dataset.check); return; }
-    const rt = e.target.closest('[data-retry]');
-    if(rt){ resetExercise(rt.dataset.retry); return; }
-  });
-
-  /* ---- notebook controls ---- */
-  const nbSearch = $('#nbSearch');
-  if(nbSearch) nbSearch.addEventListener('input', renderNotebook);
-  ['nbSection','nbPos','nbView'].forEach(function(id){
-    const el = document.getElementById(id);
-    if(el) el.addEventListener('change', renderNotebook);
-  });
-  const hideVi = $('#nbHideVi');
-  if(hideVi){
-    hideVi.addEventListener('change', function(){
-      document.body.classList.toggle('nb-hidevi', hideVi.checked);
-      const list = $('#nbList');
-      if(list) list.classList.toggle('hide-vi', hideVi.checked);
-    });
+// Xáo trộn
+document.getElementById('shuffleBtn').addEventListener('click', () => {
+  for (let i = list.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [list[i], list[j]] = [list[j], list[i]];
   }
-  const resetBtn = $('#nbReset');
-  if(resetBtn) resetBtn.addEventListener('click', function(){
-    $('#nbSearch').value=''; $('#nbSection').value='all'; $('#nbPos').value='all'; $('#nbView').value='all';
-    $('#nbHideVi').checked = false;
-    document.body.classList.remove('nb-hidevi');
-    renderNotebook();
-  });
-  const flashBtn = $('#nbFlash');
-  if(flashBtn) flashBtn.addEventListener('click', openFlash);
-  const flashClose = $('#flashClose');
-  if(flashClose) flashClose.addEventListener('click', function(){ $('#flashWrap').style.display='none'; });
-  const flashFlip = $('#flashFlip');
-  if(flashFlip) flashFlip.addEventListener('click', function(){ flashFlipped = !flashFlipped; paintFlash(); });
-  const flashNext = $('#flashNext');
-  if(flashNext) flashNext.addEventListener('click', function(){
-    flashIndex = (flashIndex+1) % flashDeck.length; flashFlipped = false; paintFlash();
-  });
-  const flashPrev = $('#flashPrev');
-  if(flashPrev) flashPrev.addEventListener('click', function(){
-    flashIndex = (flashIndex-1+flashDeck.length) % flashDeck.length; flashFlipped = false; paintFlash();
-  });
-  const flashShuffle = $('#flashShuffle');
-  if(flashShuffle) flashShuffle.addEventListener('click', buildDeck);
-  const flashSpeak = $('#flashSpeak');
-  if(flashSpeak) flashSpeak.addEventListener('click', function(){
-    const v = flashDeck[flashIndex];
-    if(v) speak(v.word);
-  });
+  idx = 0; flipped = false; render();
+});
 
-  /* ---- notes ---- */
-  document.addEventListener('input', function(e){
-    const ta = e.target.closest('[data-note]');
-    if(!ta) return;
-    const k = ta.dataset.note;
-    DB.notes[k] = ta.value;
-    saveDB();
-    const st = document.getElementById('ns-'+k);
-    if(st){ st.textContent = 'Saved'; setTimeout(function(){ st.textContent=''; }, 1200); }
-  });
-  const exN = $('#exportNotes');
-  if(exN) exN.addEventListener('click', exportNotes);
-  const delN = $('#deleteNotes');
-  if(delN) delN.addEventListener('click', function(){
-    if(confirm('Delete ALL your notes? This cannot be undone.')){
-      DB.notes = {}; saveNow(); renderNotes(); toast('All notes deleted');
-    }
-  });
+// Chọn giọng mặc định
+document.getElementById('accentSeg').addEventListener('click', (e) => {
+  const b = e.target.closest('button[data-accent]');
+  if (!b) return;
+  accent = b.dataset.accent;
+  [...b.parentElement.children].forEach(x => x.classList.toggle('active', x === b));
+  render();
+});
 
-  /* ---- matching game ---- */
-  $('#matchNew').addEventListener('click', renderMatch);
-  document.addEventListener('click', function(e){
-    const mi = e.target.closest('.mitem');
-    if(!mi) return;
-    if(mi.dataset.side === 'l'){
-      $$('#mLeft .mitem').forEach(function(x){ x.classList.remove('sel'); });
-      mi.classList.add('sel');
-      matchSel = mi.dataset.id;
-      return;
-    }
-    if(!matchSel){ toast('Choose an English word first'); return; }
-    if(mi.dataset.id === matchSel){
-      mi.classList.add('matched');
-      const leftEl = document.querySelector('#mLeft .mitem[data-id="'+matchSel+'"]');
-      if(leftEl){ leftEl.classList.add('matched'); leftEl.classList.remove('sel'); }
-      matchDone++;
-      matchSel = null;
-      const st = $('#matchStatus');
-      if(st) st.textContent = matchDone + ' / 6 matched';
-      if(matchDone === 6){
-        toast('All matched — well done!');
-        DB.completed['practice'] = true;
-        saveDB(); updateProgress();
-      }
-    }else{
-      mi.classList.add('shake');
-      setTimeout(function(){ mi.classList.remove('shake'); }, 320);
-    }
-  });
+// Chips lọc chủ đề
+const chipsEl = document.getElementById('chips');
+const chipDefs = [{ key:'all', label:'Tất cả' }].concat(
+  Object.entries(CATS).map(([k, v]) => ({ key:k, label:v }))
+);
 
-  /* ---- review ---- */
-  const rc = $('#reviewClear');
-  if(rc) rc.addEventListener('click', function(){
-    if(confirm('Clear the error review list?')){
-      DB.quiz.wrong = {}; saveNow(); renderReview(); renderDashboard();
-    }
-  });
+chipDefs.forEach((def, i) => {
+  const b = document.createElement('button');
+  b.className = 'chip' + (i === 0 ? ' active' : '');
+  const count = def.key === 'all' ? DATA.length : DATA.filter(x => x.c === def.key).length;
+  b.textContent = `${def.label} (${count})`;
+  b.dataset.cat = def.key;
+  chipsEl.appendChild(b);
+});
 
-  /* ---- reset all ---- */
-  const ra = $('#resetAll');
-  if(ra) ra.addEventListener('click', function(){
-    if(confirm('Reset ALL data (progress, bookmarks, notes, highlights, quiz results)? This cannot be undone.')){
-      localStorage.removeItem(KEY);
-      location.reload();
-    }
-  });
+chipsEl.addEventListener('click', (e) => {
+  const b = e.target.closest('.chip');
+  if (!b) return;
+  [...chipsEl.children].forEach(x => x.classList.toggle('active', x === b));
+  list = b.dataset.cat === 'all' ? DATA.slice() : DATA.filter(x => x.c === b.dataset.cat);
+  idx = 0; flipped = false; render();
+});
 
-  /* ---- highlight toolbar ---- */
-  const tb = $('#hlToolbar');
-  // Prevent the toolbar from stealing focus / clearing the text selection
-  tb.addEventListener('mousedown', function(e){ e.preventDefault(); });
-  tb.addEventListener('click', function(e){
-    const sw = e.target.closest('[data-color]');
-    if(sw){ applyColorToSelection(sw.dataset.color); return; }
-    if(e.target.closest('#hlRemove')){ removeHighlightFromSelection(); }
-  });
+// Bàn phím
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT') return;
+  if (e.code === 'Space'){ e.preventDefault(); toggleFlip(); }
+  else if (e.code === 'ArrowRight'){ e.preventDefault(); go(1); }
+  else if (e.code === 'ArrowLeft'){ e.preventDefault(); go(-1); }
+  else if (e.key === '1'){ speak(list[idx].w, 'en-US'); }
+  else if (e.key === '2'){ speak(list[idx].w, 'en-GB'); }
+});
 
-  // Selection detection
-  document.addEventListener('mouseup', function(){ setTimeout(evaluateSelection, 30); });
-  document.addEventListener('touchend', function(){ setTimeout(evaluateSelection, 260); });
-  document.addEventListener('mousedown', function(e){
-    if(!e.target.closest('#hlToolbar')) hideToolbar();
-  });
-  window.addEventListener('scroll', hideToolbar, {passive:true});
-
-  const clearHl = $('#clearAllHl');
-  if(clearHl) clearHl.addEventListener('click', function(){
-    if(confirm('Remove ALL highlights from the lesson text? This cannot be undone.')){
-      clearAllHighlights();
-    }
-  });
-
-  /* ---- start on home ---- */
-  showPage('home');
-}
-
-document.addEventListener('DOMContentLoaded', init);
+// Khởi động
+render();
 </script>
 </body>
 </html>
