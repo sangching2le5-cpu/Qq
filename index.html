@@ -40,7 +40,6 @@ html[data-theme="dark"]{
   --border:#26343f;
   --primary:#5aa9e6;
   --primary-dark:#7cc0f0;
-  --primary-soft:#1c3purple;
   --primary-soft:#1c3348;
   --good:#5ed49b;
   --good-soft:#15311f;
@@ -186,7 +185,7 @@ html[data-theme="dark"] .vword{color:var(--primary)}
 }
 html[data-theme="dark"] .pos{color:var(--primary)}
 .vvi{font-size:.9rem;font-weight:600;color:var(--good)}
-.vcard-actions{display:flex;gap:5px;flex:0 0 auto}
+.vcard-actions{display:flex;gap:5px;flex:0 0 auto;flex-wrap:wrap;justify-content:flex-end}
 .chip-btn{
   width:29px;height:29px;border-radius:8px;border:1px solid var(--border);
   background:var(--card);color:var(--text-soft);font-size:.85rem;line-height:1;
@@ -197,6 +196,7 @@ html[data-theme="dark"] .chip-btn[aria-pressed="true"]{color:var(--primary)}
 .chip-btn.bm[aria-pressed="true"]{background:#fff4cf;border-color:#e5c65a;color:#a97d00}
 html[data-theme="dark"] .chip-btn.bm[aria-pressed="true"]{background:#3a3116;color:#f0cf6a;border-color:#7a6a1e}
 .chip-btn.ln[aria-pressed="true"]{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.chip-btn.spk:hover{background:var(--primary-soft);color:var(--primary-dark);border-color:var(--primary)}
 .vdef{margin-top:8px;font-size:.88rem}
 .vdef-vi{font-size:.85rem;color:var(--text-soft);font-style:italic}
 .vex{margin-top:8px;font-size:.88rem}
@@ -224,7 +224,8 @@ html[data-theme="dark"] .chip-btn.bm[aria-pressed="true"]{background:#3a3116;col
 .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 
 /* ============ HLBLOCK + MARKS ============ */
-.hlblock{margin:0 0 .8rem;padding:2px 0;border-radius:4px}
+.hlblock{margin:0 0 .8rem;padding:2px 0;border-radius:4px;
+  -webkit-user-select:text; user-select:text; -webkit-touch-callout:none;}
 .hlblock:last-child{margin-bottom:0}
 mark.hl{padding:.05em .05em;border-radius:3px;color:inherit;background:transparent}
 mark.hl-yellow{background:var(--hl-yellow)}
@@ -506,13 +507,14 @@ html[data-theme="dark"] .tag{color:var(--primary)}
         <h2>How to use this lesson</h2>
         <ol class="small">
           <li><b>Read the lesson sections</b> in order (A → B → C). Use the sidebar or the Previous / Next buttons.</li>
+          <li><b>Listen to a word</b> — click the 🔊 icon on any vocabulary card to hear it in American English (uses your device's built-in speech engine).</li>
           <li><b>Highlight</b> any lesson text with your mouse or finger, then choose a colour in the floating toolbar.</li>
           <li><b>Write notes</b> in the Personal notes page — they save automatically.</li>
           <li><b>Study vocabulary</b> in the notebook: search, filter, bookmark, mark as learned, use flashcards.</li>
           <li><b>Do the exercises</b> 13.1–13.5, then review your mistakes in the Error review page.</li>
         </ol>
         <div class="hr"></div>
-        <p class="small muted"><b>A note on audio:</b> this lesson does not play recorded pronunciation. No authentic British recordings were supplied, so no audio button is shown. Use the IPA transcriptions to practise the sounds.</p>
+        <p class="small muted"><b>Note on audio:</b> pronunciation is provided by your device's text-to-speech engine (en-US voice). On some devices this may not be available; in that case the speaker button will not respond.</p>
       </div>
     </section>
 
@@ -807,7 +809,7 @@ html[data-theme="dark"] .tag{color:var(--primary)}
       <div class="page-head">
         <span class="pill">Study tools</span>
         <h1>Vocabulary notebook</h1>
-        <p class="lead">Search, filter, bookmark, and mark words as learned.</p>
+        <p class="lead">Search, filter, bookmark, and mark words as learned. Click 🔊 to hear a word in American English.</p>
       </div>
 
       <div class="card">
@@ -852,6 +854,7 @@ html[data-theme="dark"] .tag{color:var(--primary)}
           <button class="btn sm primary" id="flashFlip">Show / hide answer</button>
           <button class="btn sm" id="flashNext">Next →</button>
           <button class="btn sm" id="flashShuffle">Shuffle</button>
+          <button class="btn sm" id="flashSpeak">🔊 Listen</button>
           <button class="btn sm ghost" id="flashClose">Close</button>
         </div>
         <p class="muted small" id="flashPos" style="margin-top:10px"></p>
@@ -1037,6 +1040,55 @@ function toast(msg){
   t.classList.add('show');
   clearTimeout(t._h);
   t._h = setTimeout(()=>t.classList.remove('show'), 1900);
+}
+
+/* =========================================================
+   1b. SPEECH (US English)
+   ========================================================= */
+let TTS_READY = false;
+function initTTS(){
+  if(!('speechSynthesis' in window)) return;
+  // Try to prime the voice list
+  try{
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged = function(){ TTS_READY = true; };
+  }catch(e){}
+}
+function speak(text){
+  if(!('speechSynthesis' in window)){
+    toast('Speech is not supported in this browser');
+    return;
+  }
+  try{
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(String(text || ''));
+    u.lang = 'en-US';
+    u.rate = 0.85;
+    u.pitch = 1;
+    u.volume = 1;
+    const voices = window.speechSynthesis.getVoices() || [];
+    let chosen = null;
+    // Prefer a US English voice
+    for(let i=0;i<voices.length;i++){
+      const v = voices[i];
+      const lang = (v.lang || '').toLowerCase();
+      if(lang === 'en-us' || lang === 'en_us' || lang.indexOf('en-us') === 0){
+        if(/samantha|zira|aria|siri|google us|allison|ava|susan/i.test(v.name)){
+          chosen = v; break;
+        }
+        if(!chosen) chosen = v;
+      }
+    }
+    if(!chosen){
+      for(let i=0;i<voices.length;i++){
+        if((voices[i].lang || '').toLowerCase().indexOf('en') === 0){ chosen = voices[i]; break; }
+      }
+    }
+    if(chosen) u.voice = chosen;
+    window.speechSynthesis.speak(u);
+  }catch(e){
+    toast('Could not play audio');
+  }
 }
 
 /* =========================================================
@@ -1419,7 +1471,7 @@ const VOCAB = [
 ];
 
 /* =========================================================
-   3. QUIZ BANKS (lesson mini-checks & practice)
+   3. QUIZ BANKS
    ========================================================= */
 const QUIZZES = {
   miniA:[
@@ -1706,6 +1758,13 @@ function vocabCardHTML(v){
         '<div class="vmeta"><span class="pos">'+esc(v.pos)+'</span><span class="vvi">'+esc(v.vi)+'</span></div>'+
       '</div>'+
       '<div class="vcard-actions">'+
+        '<button class="chip-btn spk" data-speak="'+esc(v.word)+'" title="Listen (US English)" aria-label="Listen to pronunciation">'+
+          '<svg class="ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'+
+            '<path d="M8 2.5 4.5 6H2v4h2.5L8 13.5z"/>'+
+            '<path d="M11 6a2.5 2.5 0 0 1 0 4"/>'+
+            '<path d="M13 4a5 5 0 0 1 0 8"/>'+
+          '</svg>'+
+        '</button>'+
         '<button class="chip-btn bm" data-bm="'+esc(v.id)+'" aria-pressed="'+bm+'" title="Bookmark">★</button>'+
         '<button class="chip-btn ln" data-learn="'+esc(v.id)+'" aria-pressed="'+learned+'" title="Mark as learned">✓</button>'+
       '</div>'+
@@ -1728,6 +1787,13 @@ function renderVocabGroups(){
 function bindVocabClicks(root){
   root = root || document;
   root.addEventListener('click', function(e){
+    // Speak button
+    const spkBtn = e.target.closest('[data-speak]');
+    if(spkBtn){
+      speak(spkBtn.dataset.speak);
+      return;
+    }
+    // Bookmark
     const bmBtn = e.target.closest('[data-bm]');
     if(bmBtn){
       const id = bmBtn.dataset.bm;
@@ -1737,6 +1803,7 @@ function bindVocabClicks(root){
       saveDB(); updateProgress();
       return;
     }
+    // Learned
     const lnBtn = e.target.closest('[data-learn]');
     if(lnBtn){
       const id = lnBtn.dataset.learn;
@@ -1748,7 +1815,7 @@ function bindVocabClicks(root){
       saveDB(); updateProgress();
       return;
     }
-    // practice mode: reveal a card's Vietnamese
+    // Practice mode: reveal Vietnamese on click
     if(document.body.classList.contains('nb-hidevi')){
       const card = e.target.closest('.vcard');
       if(card && (e.target.closest('.vvi') || e.target.closest('.vdef-vi') || e.target.closest('.vex-vi'))){
@@ -1785,6 +1852,7 @@ function checkMiniQuiz(storeKey, box){
   let correct = 0;
   bank.forEach(function(q,i){
     const qEl = box.querySelector('.q[data-q="'+i+'"]');
+    if(!qEl) return;
     const fb = qEl.querySelector('.fb');
     const chosen = qEl.querySelector('input[type=radio]:checked');
     const ok = chosen && (+chosen.value === q.answer);
@@ -1793,10 +1861,12 @@ function checkMiniQuiz(storeKey, box){
       if(chosen && +chosen.value === j && j !== q.answer) o.classList.add('wrong');
     });
     if(ok) correct++;
-    fb.hidden = false;
-    fb.className = 'fb ' + (ok ? 'good' : 'bad');
-    fb.innerHTML = (ok ? '✔ Correct. ' : '✘ Not quite. ') + esc(q.exp) +
-      (ok ? '' : ' <span class="ans">Answer: ' + esc(q.options[q.answer]) + '</span>');
+    if(fb){
+      fb.hidden = false;
+      fb.className = 'fb ' + (ok ? 'good' : 'bad');
+      fb.innerHTML = (ok ? '✔ Correct. ' : '✘ Not quite. ') + esc(q.exp) +
+        (ok ? '' : ' <span class="ans">Answer: ' + esc(q.options[q.answer]) + '</span>');
+    }
 
     const wkey = storeKey + ':' + i;
     if(ok){ delete DB.quiz.wrong[wkey]; }
@@ -1928,78 +1998,115 @@ function resetExercise(id){
 }
 
 /* =========================================================
-   9. HIGHLIGHTING
+   9. HIGHLIGHTING (rewritten — preserves DOM, uses text nodes)
    ========================================================= */
+function unwrapMarks(block){
+  block.querySelectorAll('mark.hl').forEach(function(m){
+    const parent = m.parentNode;
+    while(m.firstChild) parent.insertBefore(m.firstChild, m);
+    parent.removeChild(m);
+  });
+  block.normalize();
+}
+
 function applyHighlights(block){
   const id = block.dataset.hl;
   if(!id) return;
-  if(block.dataset.raw === undefined) block.dataset.raw = block.textContent;
-  const text = block.dataset.raw;
-  const ranges = (DB.highlights[id] || []).slice().sort(function(a,b){ return a.start - b.start || a.end - b.end; });
-
-  block.textContent = '';
-  if(!ranges.length){
-    block.appendChild(document.createTextNode(text));
-    return;
+  if(!block.dataset.hlReady){
+    block.dataset.hlReady = '1';
   }
-  const bounds = {0:true, [text.length]:true};
-  ranges.forEach(function(r){
-    bounds[Math.max(0,Math.min(text.length, r.start))] = true;
-    bounds[Math.max(0,Math.min(text.length, r.end))] = true;
-  });
-  const pts = Object.keys(bounds).map(Number).sort(function(a,b){ return a-b; });
+  // First, remove existing marks
+  unwrapMarks(block);
 
-  const segs = [];
-  for(let i=0;i<pts.length-1;i++){
-    const s = pts[i], e = pts[i+1];
-    if(e <= s) continue;
-    let color = null;
-    for(let k=0;k<ranges.length;k++){
-      if(ranges[k].start <= s && ranges[k].end >= e) color = ranges[k].color;
+  const ranges = (DB.highlights[id] || []).slice().sort(function(a,b){ return a.start - b.start; });
+  if(!ranges.length) return;
+
+  // Collect text nodes and their absolute offset ranges
+  const textNodes = [];
+  let offset = 0;
+  const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT, null);
+  let node;
+  while((node = walker.nextNode())){
+    const len = node.textContent.length;
+    if(len > 0) textNodes.push({node: node, start: offset, end: offset + len});
+    offset += len;
+  }
+  if(!textNodes.length) return;
+
+  // Process each text node from right to left (so splitting doesn't affect
+  // text nodes to the left that we haven't processed yet)
+  for(let i = textNodes.length - 1; i >= 0; i--){
+    const tn = textNodes[i];
+    const text = tn.node.textContent;
+    if(!text) continue;
+    const colors = new Array(text.length).fill(null);
+    // Later ranges overwrite earlier ones at the same position
+    ranges.forEach(function(r){
+      const s = Math.max(0, r.start - tn.start);
+      const e = Math.min(text.length, r.end - tn.start);
+      for(let k = s; k < e; k++) colors[k] = r.color;
+    });
+    // Build runs of same colour
+    const runs = [];
+    let curColor = null, runStart = 0;
+    for(let k = 0; k <= colors.length; k++){
+      const c = k < colors.length ? colors[k] : null;
+      if(c !== curColor){
+        if(curColor !== null) runs.push({start: runStart, end: k, color: curColor});
+        runStart = k;
+        curColor = c;
+      }
     }
-    const seg = text.slice(s, e);
-    if(!seg) continue;
-    if(segs.length && segs[segs.length-1].color === color){
-      segs[segs.length-1].text += seg;
-    }else{
-      segs.push({text:seg, color:color});
+    if(!runs.length) continue;
+    // Apply runs right-to-left
+    let curNode = tn.node;
+    for(let k = runs.length - 1; k >= 0; k--){
+      const run = runs[k];
+      // Split off the part after run.end (if needed)
+      if(run.end < curNode.textContent.length){
+        curNode.splitText(run.end);
+      }
+      if(run.start > 0){
+        const after = curNode.splitText(run.start);
+        const mark = document.createElement('mark');
+        mark.className = 'hl hl-' + run.color;
+        after.parentNode.replaceChild(mark, after);
+        mark.appendChild(after);
+      }else{
+        const mark = document.createElement('mark');
+        mark.className = 'hl hl-' + run.color;
+        curNode.parentNode.replaceChild(mark, curNode);
+        mark.appendChild(curNode);
+      }
     }
   }
-  segs.forEach(function(seg){
-    if(seg.color){
-      const m = document.createElement('mark');
-      m.className = 'hl hl-' + seg.color;
-      m.textContent = seg.text;
-      block.appendChild(m);
-    }else{
-      block.appendChild(document.createTextNode(seg.text));
-    }
-  });
 }
 
 function applyAllHighlights(){
-  $$('.hlblock[data-hl]').forEach(applyHighlights);
+  $$('.hlblock[data-hl]').forEach(function(block){
+    try{ applyHighlights(block); }catch(e){ /* skip broken block */ }
+  });
 }
 
 function localOffsets(block, range){
-  const total = (block.dataset.raw !== undefined ? block.dataset.raw : block.textContent).length;
+  const total = block.textContent.length;
   let start = 0, end = total;
   if(block.contains(range.startContainer)){
     const r = document.createRange();
     r.selectNodeContents(block);
-    r.setEnd(range.startContainer, range.startOffset);
+    try{ r.setEnd(range.startContainer, range.startOffset); }catch(e){}
     start = r.toString().length;
   }
   if(block.contains(range.endContainer)){
     const r = document.createRange();
     r.selectNodeContents(block);
-    r.setEnd(range.endContainer, range.endOffset);
+    try{ r.setEnd(range.endContainer, range.endOffset); }catch(e){}
     end = r.toString().length;
   }
   start = Math.max(0, Math.min(total, start));
   end   = Math.max(0, Math.min(total, end));
   if(end < start){ const t = start; start = end; end = t; }
-  return {start:start, end:end, total:total};
+  return {start:start, end:end};
 }
 
 let pendingSelection = null;
@@ -2020,15 +2127,17 @@ function showToolbarNear(rect){
 function hideToolbar(){
   const tb = $('#hlToolbar');
   if(tb) tb.hidden = true;
-  pendingSelection = null;
+  // NOTE: we deliberately do NOT clear pendingSelection here,
+  // because on touch devices the selection may be briefly lost
+  // while the user taps the colour swatch.
 }
 
 function evaluateSelection(){
   const sel = window.getSelection();
-  const tb = $('#hlToolbar');
   if(!sel || sel.isCollapsed || sel.rangeCount === 0){ hideToolbar(); return; }
   const range = sel.getRangeAt(0);
   if(range.collapsed){ hideToolbar(); return; }
+
   const container = range.commonAncestorContainer;
   const el = container.nodeType === 1 ? container : container.parentElement;
   if(!el || !el.closest('#content')){ hideToolbar(); return; }
@@ -2047,11 +2156,11 @@ function evaluateSelection(){
     if(rects && rects.length) rect = rects[rects.length-1];
   }
   if(rect && (rect.width || rect.height)) showToolbarNear(rect);
-  else tb.hidden = true;
+  else hideToolbar();
 }
 
 function applyColorToSelection(color){
-  if(!pendingSelection){ return; }
+  if(!pendingSelection){ toast('Please select some text first'); return; }
   const range = pendingSelection.range;
   const targets = [];
   pendingSelection.blocks.forEach(function(block){
@@ -2061,19 +2170,21 @@ function applyColorToSelection(color){
     const o = localOffsets(block, range);
     if(o.end > o.start) targets.push({block:block, start:o.start, end:o.end});
   });
+  if(!targets.length){ hideToolbar(); pendingSelection = null; return; }
   targets.forEach(function(t){
     const id = t.block.dataset.hl;
     if(!DB.highlights[id]) DB.highlights[id] = [];
     DB.highlights[id].push({start:t.start, end:t.end, color:color});
     if(DB.highlights[id].length > 60) DB.highlights[id] = DB.highlights[id].slice(-60);
   });
-  if(targets.length){
-    targets.forEach(function(t){ applyHighlights(t.block); });
-    saveNow();
-    toast('Highlight saved');
-  }
-  window.getSelection().removeAllRanges();
+  targets.forEach(function(t){
+    try{ applyHighlights(t.block); }catch(e){}
+  });
+  saveNow();
+  toast('Highlight saved');
+  try{ window.getSelection().removeAllRanges(); }catch(e){}
   hideToolbar();
+  pendingSelection = null;
 }
 
 function removeHighlightFromSelection(){
@@ -2097,11 +2208,21 @@ function removeHighlightFromSelection(){
     });
     if(DB.highlights[id].length !== before) changed = true;
     if(!DB.highlights[id].length) delete DB.highlights[id];
-    applyHighlights(t.block);
+    try{ applyHighlights(t.block); }catch(e){}
   });
   if(changed){ saveNow(); toast('Highlight removed'); }
-  window.getSelection().removeAllRanges();
+  try{ window.getSelection().removeAllRanges(); }catch(e){}
   hideToolbar();
+  pendingSelection = null;
+}
+
+function clearAllHighlights(){
+  DB.highlights = {};
+  saveNow();
+  $$('.hlblock[data-hl]').forEach(function(b){
+    try{ unwrapMarks(b); }catch(e){}
+  });
+  toast('All highlights cleared');
 }
 
 /* =========================================================
@@ -2273,7 +2394,6 @@ function updateProgress(){
   const hb = $('#homeBest'); if(hb) hb.textContent = DB.quiz.best == null ? '—' : DB.quiz.best + '%';
   const hbm = $('#homeBm'); if(hbm) hbm.textContent = Object.keys(DB.bookmarks).filter(function(k){ return DB.bookmarks[k]; }).length;
 
-  // completion checkboxes
   ['lessonA','lessonB','lessonC'].forEach(function(k){
     const cb = document.querySelector('[data-complete="'+k+'"]');
     if(cb) cb.checked = !!DB.completed[k];
@@ -2343,6 +2463,7 @@ function applyTheme(){
    ========================================================= */
 function init(){
   loadDB();
+  initTTS();
   applyTheme();
   renderVocabGroups();
   renderExercises();
@@ -2356,6 +2477,7 @@ function init(){
   renderQuizInto('#miniC','miniC','miniC');
   renderQuizInto('#pracC','pracC','pracC');
 
+  // Apply saved highlights AFTER the DOM is fully built
   applyAllHighlights();
   updateProgress();
 
@@ -2420,20 +2542,20 @@ function init(){
     const cq = e.target.closest('[data-checkquiz]');
     if(cq){
       const key = cq.dataset.checkquiz;
-      const box = cq.closest('div[id]') || cq.parentElement.parentElement;
-      const container = document.querySelector('[data-quizscore="'+key+'"]').closest('.card') || box;
-      const holder = container.querySelector('.q[data-q="0"]').parentElement;
+      const scEl = document.querySelector('[data-quizscore="'+key+'"]');
+      const holder = scEl.closest('.card').querySelector('.q[data-q="0"]').parentElement;
       checkMiniQuiz(key, holder);
       return;
     }
     const rq = e.target.closest('[data-resetquiz]');
     if(rq){
       const key = rq.dataset.resetquiz;
-      const holder = document.querySelector('[data-quizscore="'+key+'"]').closest('.card').querySelector('.q[data-q="0"]').parentElement;
+      const scEl = document.querySelector('[data-quizscore="'+key+'"]');
+      const holder = scEl.closest('.card').querySelector('.q[data-q="0"]').parentElement;
       holder.querySelectorAll('input[type=radio]').forEach(function(r){ r.checked = false; });
       holder.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('correct','wrong'); });
       holder.querySelectorAll('.fb').forEach(function(f){ f.hidden = true; f.className = 'fb'; f.textContent=''; });
-      const sc = document.querySelector('[data-quizscore="'+key+'"]'); if(sc) sc.textContent = '';
+      if(scEl) scEl.textContent = '';
       return;
     }
     const ck = e.target.closest('[data-check]');
@@ -2480,6 +2602,11 @@ function init(){
   });
   const flashShuffle = $('#flashShuffle');
   if(flashShuffle) flashShuffle.addEventListener('click', buildDeck);
+  const flashSpeak = $('#flashSpeak');
+  if(flashSpeak) flashSpeak.addEventListener('click', function(){
+    const v = flashDeck[flashIndex];
+    if(v) speak(v.word);
+  });
 
   /* ---- notes ---- */
   document.addEventListener('input', function(e){
@@ -2511,7 +2638,7 @@ function init(){
       matchSel = mi.dataset.id;
       return;
     }
-    if(!matchSel) { toast('Choose an English word first'); return; }
+    if(!matchSel){ toast('Choose an English word first'); return; }
     if(mi.dataset.id === matchSel){
       mi.classList.add('matched');
       const leftEl = document.querySelector('#mLeft .mitem[data-id="'+matchSel+'"]');
@@ -2550,6 +2677,7 @@ function init(){
 
   /* ---- highlight toolbar ---- */
   const tb = $('#hlToolbar');
+  // Prevent the toolbar from stealing focus / clearing the text selection
   tb.addEventListener('mousedown', function(e){ e.preventDefault(); });
   tb.addEventListener('click', function(e){
     const sw = e.target.closest('[data-color]');
@@ -2557,7 +2685,8 @@ function init(){
     if(e.target.closest('#hlRemove')){ removeHighlightFromSelection(); }
   });
 
-  document.addEventListener('mouseup', function(){ setTimeout(evaluateSelection, 20); });
+  // Selection detection
+  document.addEventListener('mouseup', function(){ setTimeout(evaluateSelection, 30); });
   document.addEventListener('touchend', function(){ setTimeout(evaluateSelection, 260); });
   document.addEventListener('mousedown', function(e){
     if(!e.target.closest('#hlToolbar')) hideToolbar();
@@ -2567,13 +2696,7 @@ function init(){
   const clearHl = $('#clearAllHl');
   if(clearHl) clearHl.addEventListener('click', function(){
     if(confirm('Remove ALL highlights from the lesson text? This cannot be undone.')){
-      DB.highlights = {};
-      saveNow();
-      $$('.hlblock[data-hl]').forEach(function(b){
-        const raw = b.dataset.raw !== undefined ? b.dataset.raw : b.textContent;
-        b.textContent = raw;
-      });
-      toast('All highlights cleared');
+      clearAllHighlights();
     }
   });
 
